@@ -1,11 +1,17 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { NavBar1 } from './components/Navigation';
-import {NavBar2} from './components/Navigation';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {Frontpage} from './pages/Frontpage';
+import {Dashboard} from './pages/Dashboard';
 function App() {
   return (
     <div className="App">
-      <NavBar2/>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Frontpage/>} />
+          <Route exact path="/Dashboard" element={<Dashboard/>} />
+        </Routes>
+      </Router>
       <header className="App-header">
 
       </header>
