@@ -1,5 +1,8 @@
 # Senior_Capstone
-- [ ] Implement login functionality
+- [X] Implement login functionality
 - [ ] Create dashboard layout
-- [ ] implment map function
-- [ ] use checkboxes to filter out events
+- [ ] Read reactjs google maps api
+- [ ] Implment map function
+- [ ] Use checkboxes to filter out events
+- [ ] Figure set up database for events
+- [ ] Get data from events and then display them on maps
