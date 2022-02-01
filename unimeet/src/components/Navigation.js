@@ -1,7 +1,7 @@
 
 import { Nav,Container,Navbar,Button } from 'react-bootstrap';
 import {signInGoogle,signOutGoogle,userphoto} from './Firebase'
-import '../App.css'
+
 
 /*
 Two navbars. If signed in they switch.
@@ -11,7 +11,7 @@ export const NavBar1 = () => {
 return(
     <Navbar bg="dark" variant="dark">
     <Container>
-    <Navbar.Brand href="#home">UniMeet</Navbar.Brand>
+    <Navbar.Brand>UniMeet</Navbar.Brand>
     <Button onClick={signInGoogle}> Sign in</Button>
     </Container>
   </Navbar>

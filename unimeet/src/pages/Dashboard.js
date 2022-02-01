@@ -5,16 +5,21 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 
+
 export const Dashboard = () => {
   const navigate = useNavigate();
   const [userdata] = useAuthState(auth);
-  if (!userdata) {
+  useEffect(() => {
+    if (!userdata) {
 
-    navigate('/')
-    
-  }
+      navigate('/')
+      
+    }
+
+  },[userdata])
+  
   return (
-    <div>
+    <div className="textBackground">
       <NavBar2 />
       <h1> This is the Dashboard</h1>
       <Mapapi />

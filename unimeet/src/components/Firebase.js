@@ -36,7 +36,6 @@ export const signInGoogle = async () => {
 
 export const signOutGoogle = () =>{
   signOut(auth);
-  {/*  Debugging user key */}
-  console.log("Signed out")
+ 
 }
 
