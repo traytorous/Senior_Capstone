@@ -37,7 +37,7 @@ return(
 <Form>
   <Form.Group className="mb-3" controlId="formBasicEmail">
     <Form.Label>Add event</Form.Label>
-    <Form.Control type="email" placeholder="Input event here" />
+    <Form.Control type="text" placeholder="Input event here" />
     <Form.Text className="text-muted">
       Events go here
     </Form.Text>

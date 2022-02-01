@@ -17,25 +17,30 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-export let userphoto = null;
+
 
 export const signInGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
-    userphoto = res.user.photoURL;
-   
-   
-    {/* Debuging user key*/}
-    
+    localStorage.setItem("userimage",res.user.photoURL);
 
-  }catch(err){
-    console.error(err);
+
+  } catch (errr) {
+    console.error(errr);
   }
 
 }
 
-export const signOutGoogle = () =>{
+export const Userphoto = () => {
+  return (
+    <img className="userimage" alt="Userimage" src={localStorage.getItem("userimage")} />
+
+  )
+}
+export const signOutGoogle = () => {
+  localStorage.removeItem("userimage")
   signOut(auth);
- 
+  
+
 }
 

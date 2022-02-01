@@ -1,7 +1,7 @@
 
-import { Nav,Container,Navbar,Button } from 'react-bootstrap';
-import {signInGoogle,signOutGoogle,userphoto} from './Firebase'
-
+import {Nav,Container,Navbar,Button } from 'react-bootstrap';
+import {signInGoogle,signOutGoogle,Userphoto} from './Firebase'
+;
 
 /*
 Two navbars. If signed in they switch.
@@ -19,6 +19,7 @@ return(
 }
 
 export const NavBar2 = () => {
+  
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
@@ -28,7 +29,7 @@ export const NavBar2 = () => {
         <div className="custonbuttom">
         <Button onClick={signOutGoogle}> Sign out</Button>
         </div>
-        <img className="userimage" alt="Userimage" src={userphoto} />
+       <Userphoto/>
       </Container>
     </Navbar>
 
