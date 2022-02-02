@@ -3,8 +3,7 @@ import { auth } from "../components/Firebase";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Form } from 'react-bootstrap';
-
+import { Form,Button } from 'react-bootstrap';
 
 
 export const Dashboard = () => {
@@ -16,6 +15,9 @@ export const Dashboard = () => {
       navigate('/')
       
     }
+    return (
+      <div></div>
+    )
 
   },[userdata])
   
@@ -32,17 +34,18 @@ export const Dashboard = () => {
 }
 
 const Inputbox = () => {
+
 return(
 <div>
 <Form>
   <Form.Group className="mb-3" controlId="formBasicEmail">
-    <Form.Label>Add event</Form.Label>
-    <Form.Control type="text" placeholder="Input event here" />
-    <Form.Text className="text-muted">
-      Events go here
-    </Form.Text>
+    <Form.Label>Input locations</Form.Label>
+    <Form.Control type="text" />
   </Form.Group>
-</Form>
+  <Button variant="primary" type="submit">
+    Submit
+  </Button>
+  </Form>
 </div>
 
 )
