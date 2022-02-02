@@ -37,3 +37,13 @@
   min-height: 100vh;
 
 }
+
+.leaflet-container{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content:center;
+  border: solid black 5px;
+  height:400px;
+  width: 400px
+}
