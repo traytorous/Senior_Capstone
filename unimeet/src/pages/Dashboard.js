@@ -8,9 +8,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import "leaflet/dist/leaflet.css"
 
 export const Dashboard = () => {
-  const boxposition = {
-
-  }
+  
   const navigate = useNavigate();
   const [userdata] = useAuthState(auth);
   useEffect(() => {
@@ -40,15 +38,15 @@ export const Dashboard = () => {
 }
 
 const Inputbox = () => {
-
+const [userEvents,setUserEvents] = useState([]);
 return(
 <div>
-<Form>
-  <Form.Group className="mb-3" controlId="formBasicEmail">
+<Form onSubmit={(e)=>{e.preventDefault()}}>
+  <Form.Group  className="mb-3" controlId="formBasicEmail" >
     <Form.Label>Input locations</Form.Label>
-    <Form.Control type="text" />
+    <Form.Control type="text" onSubmit={(e)=>{e.preventDefault()}} />
   </Form.Group>
-  <Button variant="primary" type="submit">
+  <Button variant="primary" type="button" onClick={(e)=>{e.preventDefault()}}>
     Submit
   </Button>
   </Form>
@@ -58,18 +56,14 @@ return(
 
 }
 
-/*
 
-35.307880571109386, -80.73370127156109
-
-*/
 
 const Mapapi = () => {
   return (
     <div className="leaflet-container">
     <MapContainer
         center={[35.307880571109386, -80.73370127156109]}
-        zoom={15}
+        zoom={16}
         scrollWheelZoom={false}
         >
         <TileLayer
