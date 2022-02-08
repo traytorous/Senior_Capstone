@@ -10,6 +10,7 @@ import "leaflet/dist/leaflet.css"
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png';
 import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+/* Changed the default Icon image. This is a leaflet error. Had to assign an object to replace it */
 let DefaultIcon = L.icon({
   iconUrl: icon,
   shadowUrl: iconShadow
@@ -17,7 +18,7 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 /*-------------------------End of Leaflet stuff------------------*/
-{/*Coordinate locations of UNCC buildings*/}
+/*Coordinate locations of UNCC buildings. You may add more as needed. Just make sure you add a radio button as well.*/
 const student_union = [35.308930837902004, -80.73367559555146];
 const sac = [35.3065975452604, -80.73450174470625];
 const atkins_library = [35.30583581384564, -80.73238816397159];
@@ -61,10 +62,11 @@ const Inputbox = () => {
           <Form.Label>Input locations</Form.Label>
           <Form.Control type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
-        <Button variant="primary" type="button" onClick={(e) => { e.preventDefault() }}>
+        <Button variant="primary" type="button" onClick={(e) => { e.preventDefault()}}>
           Submit
         </Button>
         {/* All this does is create the radio button layout using map(kinda like a foreach loop) */}
+        {/*Changes the value of location variable when you choose a different radio button*/}
         {['radio'].map((type) => (
           <div key={`inline-${type}`} className="mb-3">
             <Form.Check
@@ -72,13 +74,17 @@ const Inputbox = () => {
               label="Student Union"
               name="group1"
               type={type}
+              value={student_union}
               id={`inline-${type}-1`}
+              onChange={(e) => (setLocation(e.currentTarget.value))}
             />
             <Form.Check
               inline
               label="Atkins Library"
               name="group1"
               type={type}
+              value={atkins_library}
+              onChange={(e) => (setLocation(e.currentTarget.value))}
               id={`inline-${type}-2`}
             />
             <Form.Check
@@ -86,6 +92,8 @@ const Inputbox = () => {
               label="Cone Student Center"
               name="group1"
               type={type}
+              value={cone}
+              onChange={(e) => (setLocation(e.currentTarget.value))}
               id={`inline-${type}-3`}
             />
              <Form.Check
@@ -93,6 +101,8 @@ const Inputbox = () => {
               label="Student Activity Center"
               name="group1"
               type={type}
+              value={sac}
+              onChange={(e) => (setLocation(e.currentTarget.value))}
               id={`inline-${type}-4`}
             />
           </div>
@@ -110,6 +120,7 @@ const Inputbox = () => {
 
 
 const Mapapi = (props) => {
+  {/* Todo -> Replace if statement with default value types for this component*/}
 
   if (props.markerdata == null) {
     return (
