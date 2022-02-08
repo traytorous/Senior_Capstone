@@ -17,6 +17,13 @@ let DefaultIcon = L.icon({
 L.Marker.prototype.options.icon = DefaultIcon;
 
 /*-------------------------End of Leaflet stuff------------------*/
+{/*Coordinate locations of UNCC buildings*/}
+const student_union = [35.308930837902004, -80.73367559555146];
+const sac = [35.3065975452604, -80.73450174470625];
+const atkins_library = [35.30583581384564, -80.73238816397159];
+const cone = [35.30544458961595, -80.73322067039553];
+
+
 export const Dashboard = () => {
 
   const navigate = useNavigate();
@@ -46,6 +53,7 @@ export const Dashboard = () => {
 
 const Inputbox = () => {
   const [userEvents, setUserEvents] = useState(null);
+  const [location, setLocation] = useState("");
   return (
     <div>
       <Form onSubmit={(e) => { e.preventDefault() }}>
@@ -102,10 +110,6 @@ const Inputbox = () => {
 
 
 const Mapapi = (props) => {
-  const student_union = [35.308930837902004, -80.73367559555146];
-  const sac = [35.3065975452604, -80.73450174470625];
-  const atkins_library = [35.30583581384564, -80.73238816397159];
-  const cone = [35.30544458961595, -80.73322067039553];
 
   if (props.markerdata == null) {
     return (
