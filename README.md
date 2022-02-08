@@ -7,5 +7,5 @@
 - [ ] Figure set up database for events
 - [ ] Get data from events and then display them on maps
 - [X] Fix radio button issues and have it change the states of the location variable
-- [ ] Fix memory leakage issues on Dashboard component
+- [X] Fix memory leakage issues on Dashboard component
 - [ ] Create default states for the Mapapi component for better logic(check the code for comments)

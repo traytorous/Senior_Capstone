@@ -26,18 +26,22 @@ const cone = [35.30544458961595, -80.73322067039553];
 
 
 export const Dashboard = () => {
-
+  const [didMount, setDidMount] = useState(false); 
   const navigate = useNavigate();
   const [userdata] = useAuthState(auth);
   useEffect(() => {
+
+    setDidMount(true);
+    if(!didMount) {
+      return null;
+    }
+
     if (!userdata) {
 
       navigate('/')
 
     }
-    return (
-      <div></div>
-    )
+    
 
   }, [userdata])
 
@@ -62,7 +66,7 @@ const Inputbox = () => {
           <Form.Label>Input locations</Form.Label>
           <Form.Control type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
-        <Button variant="primary" type="button" onClick={(e) => { e.preventDefault()}}>
+        <Button variant="primary" type="button" onClick={(e) => { e.preventDefault() }}>
           Submit
         </Button>
         {/* All this does is create the radio button layout using map(kinda like a foreach loop) */}
@@ -96,7 +100,7 @@ const Inputbox = () => {
               onChange={(e) => (setLocation(e.currentTarget.value))}
               id={`inline-${type}-3`}
             />
-             <Form.Check
+            <Form.Check
               inline
               label="Student Activity Center"
               name="group1"
@@ -120,7 +124,7 @@ const Inputbox = () => {
 
 
 const Mapapi = (props) => {
-  {/* Todo -> Replace if statement with default value types for this component*/}
+  {/* Todo -> Replace if statement with default value types for this component*/ }
 
   if (props.markerdata == null) {
     return (
