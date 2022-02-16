@@ -57,16 +57,25 @@ export const Dashboard = () => {
 }
 
 const Inputbox = () => {
-  const [userEvents, setUserEvents] = useState(null);
+  /* Use this as a way to structure the database*/
+  const [userEvents, setUserEvents] = useState("");
   const [location, setLocation] = useState("");
+  const [data, changeData] = useState({
+  "sac":"",
+   "union": "",
+   "cone": "",
+   "lib": "",  
+  });
+  
+
   return (
     <div>
       <Form onSubmit={(e) => { e.preventDefault() }}>
         <Form.Group className="mb-3" controlId="formBasicEmail" >
           <Form.Label>Input locations</Form.Label>
-          <Form.Control type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control onChange={(e) => {setUserEvents(e.target.value);} } type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
-        <Button variant="primary" type="button" onClick={(e) => { e.preventDefault() }}>
+        <Button variant="primary" type="button" onClick={(e) => { changeData({location:userEvents}) }}>
           Submit
         </Button>
         {/* All this does is create the radio button layout using map(kinda like a foreach loop) */}
@@ -78,7 +87,7 @@ const Inputbox = () => {
               label="Student Union"
               name="group1"
               type={type}
-              value={student_union}
+              value='union'
               id={`inline-${type}-1`}
               onChange={(e) => (setLocation(e.currentTarget.value))}
             />
@@ -87,7 +96,7 @@ const Inputbox = () => {
               label="Atkins Library"
               name="group1"
               type={type}
-              value={atkins_library}
+              value='lib'
               onChange={(e) => (setLocation(e.currentTarget.value))}
               id={`inline-${type}-2`}
             />
@@ -96,7 +105,7 @@ const Inputbox = () => {
               label="Cone Student Center"
               name="group1"
               type={type}
-              value={cone}
+              value='cone'
               onChange={(e) => (setLocation(e.currentTarget.value))}
               id={`inline-${type}-3`}
             />
@@ -105,7 +114,7 @@ const Inputbox = () => {
               label="Student Activity Center"
               name="group1"
               type={type}
-              value={sac}
+              value='sac'
               onChange={(e) => (setLocation(e.currentTarget.value))}
               id={`inline-${type}-4`}
             />
@@ -113,7 +122,7 @@ const Inputbox = () => {
         ))}
       </Form>
       <div>
-        <Mapapi markerdata={userEvents} />
+        <Mapapi data={{"union":"Cool event is here"}} />
       </div>
     </div>
 
@@ -125,8 +134,22 @@ const Inputbox = () => {
 
 const Mapapi = (props) => {
   {/* Todo -> Replace if statement with default value types for this component*/ }
+  {/*Need the database object here so I can test the constant data changes*/}
+  {/*Note for Future Tray -> you will get rid of the props all together and rely on testing everything using the database
+    object. You will have to restucture the code. 
+  */}
+  const [unionEvents,changeUnionEvents] = useState(props.data['union']);
+  const [sacEvents,changeSacEvents] = useState(props.data['sac']);
+  const [libEvents,changeLibEvents] = useState(props.data['lib']);
+  const [coneEvents,changeConeEvents] = useState(props.data['cone']);
+  useEffect(() =>{
+    console.log(unionEvents);
+    changeUnionEvents(props.data['union']);
+  },[props])
+ 
+  
 
-  if (props.markerdata == null) {
+  
     return (
       <div className="leaflet-container">
         <MapContainer
@@ -140,50 +163,35 @@ const Mapapi = (props) => {
           />
           <Marker position={student_union}>
             <Popup>
-              Student Union
+              Student Union <br/>
+              {(unionEvents) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={sac}>
             <Popup>
-              Student Activity Center
+              Student Activity Center<br/>
+              {sacEvents ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={atkins_library}>
             <Popup>
-              Atkins Library
+              Atkins Library<br/>
+              {libEvents?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={cone}>
             <Popup>
-              Cone University Center
+              Cone University Center<br/>
+              {coneEvents?? <p>No events</p>}
             </Popup>
           </Marker>
         </MapContainer>
       </div>
     );
-  } else {
-    return (
+  } 
 
-      <div className="leaflet-container">
-        <MapContainer
-          center={[35.307880571109386, -80.73370127156109]}
-          zoom={16}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={[props.markerdata[0], props.markerdata[1]]}>
-            <Popup>
-              Student Union
-            </Popup>
-          </Marker>
-        </MapContainer>
-      </div>
-
-    )
-  }
+  
 
 
-}
+    
+  
