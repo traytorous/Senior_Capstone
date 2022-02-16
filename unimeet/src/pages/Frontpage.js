@@ -17,7 +17,7 @@ useEffect(()=>{
     return (
         <div className="textBackground">
         <NavBar1/>
-        <h1> This is the front page!</h1>
+        <h1> Welcome to Unimeet</h1>
         </div>
 
 

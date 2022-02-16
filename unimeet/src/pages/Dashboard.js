@@ -48,7 +48,7 @@ export const Dashboard = () => {
   return (
     <div className="textBackground">
       <NavBar2 />
-      <h1> This is the Dashboard</h1>
+      <h1> Welcome {localStorage.getItem("username")}</h1>
       <Inputbox />
     </div>
 
@@ -57,10 +57,10 @@ export const Dashboard = () => {
 }
 
 const Inputbox = () => {
-  /* Use this as a way to structure the database*/
   const [userEvents, setUserEvents] = useState("");
   const [location, setLocation] = useState("");
   const [data, changeData] = useState({
+  /*Important tip -> This is the datastructure that could be used in the database */
   "sac":"",
    "union": "",
    "cone": "",
@@ -75,7 +75,7 @@ const Inputbox = () => {
           <Form.Label>Input locations</Form.Label>
           <Form.Control onChange={(e) => {setUserEvents(e.target.value);} } type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
-        <Button variant="primary" type="button" onClick={(e) => { changeData({location:userEvents}) }}>
+        <Button variant="success" type="button" onClick={(e) => { changeData({location:userEvents}) }}>
           Submit
         </Button>
         {/* All this does is create the radio button layout using map(kinda like a foreach loop) */}

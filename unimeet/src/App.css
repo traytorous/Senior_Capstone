@@ -1,10 +1,10 @@
 .App {
   text-align: center;
 }
-
+/* Css that handles the bottom of the page*/
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color:#2d7046;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,13 +12,12 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+/* App link css*/
 .App-link {
   color: #61dafb;
 }
 
 
-/* -----------Only touch below this line----------------------*/
 /*  css for the user profile pic  */
 .userimage{
   border: 2px solid green;
@@ -27,17 +26,20 @@
 }
 /* css for the button */
 .custonbuttom{
-  margin: 25px
+  margin-top: 25px;
+  margin-bottom: 15px;
+  margin-right: 25px;
+  margin-left: 25px;
 
 }
-/*   This is the css for the body  */
+/*This is the css for the body  */
 .textBackground{
-  background-color: #282c34;
-  color: white;
+  background-color: #2d7046;
+  color: black;
   min-height: 100vh;
 
 }
-
+/* This css is for the leaflet container in the dashboard page */
 .leaflet-container{
   display:flex;
   flex-wrap: wrap;

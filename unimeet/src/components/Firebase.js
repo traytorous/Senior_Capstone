@@ -25,6 +25,7 @@ export const signInGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     localStorage.setItem("userimage",res.user.photoURL);
+    localStorage.setItem("username",res.user.displayName);
 
 
   } catch (errr) {
@@ -40,7 +41,8 @@ export const Userphoto = () => {
   )
 }
 export const signOutGoogle = () => {
-  localStorage.removeItem("userimage")
+  localStorage.removeItem("userimage");
+  localStorage.removeItem("username");
   signOut(auth);
   
 
