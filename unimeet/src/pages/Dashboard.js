@@ -49,86 +49,13 @@ export const Dashboard = () => {
     <div className="textBackground">
       <NavBar2 />
       <h1> Welcome {localStorage.getItem("username")}</h1>
-      <Inputbox />
+      <Mapapi data={{"union":"Cool event is here"}} />
     </div>
 
   );
 
 }
 
-const Inputbox = () => {
-  const [userEvents, setUserEvents] = useState("");
-  const [location, setLocation] = useState("");
-  const [data, changeData] = useState({
-  /*Important tip -> This is the datastructure that could be used in the database */
-  "sac":"",
-   "union": "",
-   "cone": "",
-   "lib": "",  
-  });
-  
-
-  return (
-    <div>
-      <Form onSubmit={(e) => { e.preventDefault() }}>
-        <Form.Group className="mb-3" controlId="formBasicEmail" >
-          <Form.Label>Input locations</Form.Label>
-          <Form.Control onChange={(e) => {setUserEvents(e.target.value);} } type="text" onSubmit={(e) => { e.preventDefault() }} />
-        </Form.Group>
-        <Button variant="success" type="button" onClick={(e) => { changeData({location:userEvents}) }}>
-          Submit
-        </Button>
-        {/* All this does is create the radio button layout using map(kinda like a foreach loop) */}
-        {/*Changes the value of location variable when you choose a different radio button*/}
-        {['radio'].map((type) => (
-          <div key={`inline-${type}`} className="mb-3">
-            <Form.Check
-              inline
-              label="Student Union"
-              name="group1"
-              type={type}
-              value='union'
-              id={`inline-${type}-1`}
-              onChange={(e) => (setLocation(e.currentTarget.value))}
-            />
-            <Form.Check
-              inline
-              label="Atkins Library"
-              name="group1"
-              type={type}
-              value='lib'
-              onChange={(e) => (setLocation(e.currentTarget.value))}
-              id={`inline-${type}-2`}
-            />
-            <Form.Check
-              inline
-              label="Cone Student Center"
-              name="group1"
-              type={type}
-              value='cone'
-              onChange={(e) => (setLocation(e.currentTarget.value))}
-              id={`inline-${type}-3`}
-            />
-            <Form.Check
-              inline
-              label="Student Activity Center"
-              name="group1"
-              type={type}
-              value='sac'
-              onChange={(e) => (setLocation(e.currentTarget.value))}
-              id={`inline-${type}-4`}
-            />
-          </div>
-        ))}
-      </Form>
-      <div>
-        <Mapapi data={{"union":"Cool event is here"}} />
-      </div>
-    </div>
-
-  )
-
-}
 
 
 

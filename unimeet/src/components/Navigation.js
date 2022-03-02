@@ -26,6 +26,8 @@ export const NavBar2 = () => {
         <Nav className="me-auto">
         </Nav>
         <div className="custonbuttom">
+          
+        <Button variant="success"> Create Event</Button>
         <Button variant="success" onClick={signOutGoogle}> Sign out</Button>
         </div>
        <Userphoto/>
