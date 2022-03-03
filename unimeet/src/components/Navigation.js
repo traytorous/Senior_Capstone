@@ -1,6 +1,9 @@
 
 import {Nav,Container,Navbar,Button } from 'react-bootstrap';
 import {signInGoogle,signOutGoogle,Userphoto} from './Firebase';
+import { useNavigate } from "react-router-dom";
+import { useEffect } from 'react';
+
 /*import '../images/unimeetlogo.png'*/
 /*
 Two navbars. If signed in they switch.
@@ -18,16 +21,19 @@ return(
 }
 
 export const NavBar2 = () => {
+  const navigate = useNavigate();
   
+  const navigateCreateEventPate = () => navigate("/CreateEventPage");
+  const navigateDashBoard = () =>  navigate('/Dashboard');
   return (
     <Navbar bg="dark" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">UniMeet</Navbar.Brand>
+        <Navbar.Brand onClick={navigateDashBoard}>UniMeet</Navbar.Brand>
         <Nav className="me-auto">
         </Nav>
         <div className="custonbuttom">
           
-        <Button variant="success"> Create Event</Button>
+        <Button variant="success" onClick={navigateCreateEventPate}> Create Event</Button>
         <Button variant="success" onClick={signOutGoogle}> Sign out</Button>
         </div>
        <Userphoto/>
