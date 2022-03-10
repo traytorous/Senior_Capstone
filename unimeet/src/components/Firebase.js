@@ -18,7 +18,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
-const db = getFirestore();
+export const db = getFirestore();
 
 export const signInGoogle = async () => {
   try {
@@ -33,6 +33,7 @@ export const signInGoogle = async () => {
 
 }
 
+{/* Getting data from the user browser. This is for testing. It should not be in production */}
 export const Userphoto = () => {
   return (
     <img className="userimage" alt="Userimage" src={localStorage.getItem("userimage")} />
@@ -46,6 +47,3 @@ export const signOutGoogle = () => {
   signOut(auth);
 }
 
-export const sendToDatabase = ()=>{
-
-}

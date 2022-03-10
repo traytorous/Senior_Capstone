@@ -2,12 +2,9 @@
 import {Nav,Container,Navbar,Button } from 'react-bootstrap';
 import {signInGoogle,signOutGoogle,Userphoto} from './Firebase';
 import { useNavigate } from "react-router-dom";
-import { useEffect } from 'react';
 
 /*import '../images/unimeetlogo.png'*/
-/*
-Two navbars. If signed in they switch.
-*/
+/*Two navbars. If signed in they switch.*/
  
 export const NavBar1 = () => {
 return(
