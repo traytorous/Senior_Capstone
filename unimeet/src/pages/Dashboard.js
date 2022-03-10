@@ -19,6 +19,7 @@ L.Marker.prototype.options.icon = DefaultIcon;
 
 /*-------------------------End of Leaflet stuff------------------*/
 /*Coordinate locations of UNCC buildings. You may add more as needed. */
+/* You will get rid of these later and just take them from the database */
 const student_union = [35.308930837902004, -80.73367559555146];
 const sac = [35.3065975452604, -80.73450174470625];
 const atkins_library = [35.30583581384564, -80.73238816397159];
