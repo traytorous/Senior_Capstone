@@ -1,3 +1,33 @@
+/*slideshow test*/
+.slideshow {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1200px;
+}
+
+
+/* test css for CstmButton */
+.login-button {
+  /*position: relative;
+  left: 470px;*/
+  display: flex;
+  margin-left: 74%;
+}
+
+/* test css for CstmButton */
+.signup-button {
+  /*position: relative;
+  left: 470px;*/
+  display: flex;
+  margin-left: auto;
+}
+
+
+
+
+
+
+
 .App {
   text-align: center;
 }
@@ -16,6 +46,7 @@
 .App-link {
   color: #61dafb;
 }
+
 
 
 /*  css for the user profile pic  */

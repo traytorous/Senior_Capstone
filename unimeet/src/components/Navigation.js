@@ -8,13 +8,17 @@ import { useEffect } from 'react';
 /*
 Two navbars. If signed in they switch.
 */
+import CstmButton from './CstmButton';
  
 export const NavBar1 = () => {
 return(
-    <Navbar bg="dark" variant="dark">
+  <Navbar bg="light" variant="dark">
     <Container>
     <Navbar.Brand>UniMeet</Navbar.Brand>
-    <Button variant="success" onClick={signInGoogle}> Sign in</Button>
+    {/*TESTING BEGIN*/}
+    <div className="login-button"><CstmButton text="Log In" variant="white" onClick={signInGoogle}/></div>
+    <div className="signup-button"><CstmButton text="Sign Up" variant="gold"/></div>
+    {/*TESTING END*/}
     </Container>
   </Navbar>
 )
