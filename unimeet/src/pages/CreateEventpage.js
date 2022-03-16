@@ -5,8 +5,10 @@ import React, { useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap';
 import { NavBar2 } from "../components/Navigation";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../components/Firebase";
+import { auth,db } from "../components/Firebase";
+import { doc,updateDoc } from "firebase/firestore"; 
 import { useAuthState } from "react-firebase-hooks/auth";
+
 
 export const CreateEventPage = () => {
   const [didMount, setDidMount] = useState(false); 
@@ -38,26 +40,28 @@ export const CreateEventPage = () => {
 }
 
 const EventSignUp = () => {
-  const [Eventname, changeEventname] = useState("");
-  const [Eventdescription, changeEventdescription] = useState("");
-  const [Location, changeLocation] = useState({
-    /*Important tip -> This is the datastructure that could be used in the database */
-    "sac": "",
-    "union": "",
-    "cone": "",
-    "lib": "",
-  });
-  const [Contactname, changeContactname] = useState("");
-  const [Contactemail, changeContactemail] = useState("");
-  const [EventPhonenumber, changeEventPhonenumber] = useState("");
+  const [Eventname, changeEventname] = useState("No event namge");
+  const [Eventdescription, changeEventdescription] = useState("No Description");
+
+  const [Location, changeLocation] = useState("union");
+  const [EventDate, changeEventDate] = useState("No Date");
+  const [EventTime, changeEventTime] = useState("No Time");
+  const [Contactname, changeContactname] = useState("No contact name");
+  const [Contactemail, changeContactemail] = useState("No Contact Email");
+  const [ContactPhonenumber, changeContactPhonenumber] = useState("No event Phone number");
   return (
     <div>
       <Form onSubmit={(e) => { e.preventDefault() }}>
-        <Form.Group className="mb-3" controlId="formBasicEmail" >
+        <Form.Group className="mb-3" controlId="EventNameID" >
           <Form.Label>Event Name</Form.Label>
           <Form.Control onChange={(e) => { changeEventname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
-        <div>
+      <Form.Group className="mb-3" controlId="EventDetailID">
+         <Form.Label>Description</Form.Label>
+         <Form.Control onChange={(e) => {changeEventdescription(e.target.value); } } as="textarea" rows={3}/>
+  </Form.Group>
+  
+  <div>
           {/**
            * 
            * Get rid of the curly braces and put your JSX code here
@@ -113,9 +117,49 @@ const EventSignUp = () => {
           </div>
           
         ))}
+
+  <Form.Group className="mb-3" controlId="EventDateID" >
+          <Form.Label> Event Date </Form.Label>
+          <Form.Control onChange={(e) => { changeEventDate(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="EventTimeID" >
+          <Form.Label> Event Time </Form.Label>
+          <Form.Control onChange={(e) => { changeEventTime(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="EventContactNameID" >
+          <Form.Label> Contact Name </Form.Label>
+          <Form.Control onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="EventContactemailID" >
+          <Form.Label> Contact Email  </Form.Label>
+          <Form.Control onChange={(e) => { changeContactemail(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="EventPhoneNumberID" >
+          <Form.Label> Contact Phone Number  </Form.Label>
+          <Form.Control onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+        </Form.Group>   
+        
+        
+            <Button variant="dark" onClick={SendEvent(Location,Eventname,Eventdescription,EventDate,
+              EventTime,Contactname,Contactemail,ContactPhonenumber)}type="submit">Create Event</Button>
       </Form>
     </div>
   )
+
+
+}
+
+ async function SendEvent (location,Eventname,Eventdescription,EventDate,EventTime,Contactname,Contactemail,ContactPhonenumber) {
+  await updateDoc(doc(db, "Location", location), {
+    "Event_Name": Eventname,
+    "Event_Description":Eventdescription,
+    "Event_Date":EventDate,
+    "Event_Time":EventTime,
+    "Contact_name":Contactname,
+    "Contact_email":Contactemail,
+    "Contact_number":ContactPhonenumber
+  });
 
 
 }
