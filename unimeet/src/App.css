@@ -1,39 +1,110 @@
-/*slideshow test*/
-.slideshow {
+/* Navigation Bar */
+
+/* entire navbar space */
+.topbar {
+  display: flex;
+  background-color: #B9975B;
+  color: white;
+  width: 90%;
+  margin: auto;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 100px;
+}
+
+/* main section */
+.header {
+  position: relative;
+  background-color: #005035;
+  color: white;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 17px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+/* login button */
+.login-button {
+  display: block;
+  float: right;
+  margin-top: 24px;
+  margin-right: 5%;
+  
+}
+
+/* signup button */
+.signup-button {
+  float: right;
+  margin-top: 24px;
+  margin-right: 1%;
+}
+
+/* unimeet logo & home button */
+.Unimeet-Logo {
+  display: block;
+  float: left;
+  height: 83px;
+  width: auto;
+  border-bottom-left-radius: 15px;
+}
+
+/*may need to scale image down and re-adjust this*/
+.UNCC-Logo {
+  position: absolute;
+  transform: translate(-68%, 0);
+  width: auto;
+  height: 75px;
+  margin: 3px;
+}
+
+
+/* Front Page */
+
+/* welcome message */
+.welcome {
+  margin-top: 1%;
   margin-left: auto;
   margin-right: auto;
-  width: 1200px;
+  width: 400px;
+  justify-content: center;
+  position: relative;
+  color: #005035;
+}
+
+/* area surrounding the slideshow */
+.slideshowBox {
+  position: relative;
+  background-color: #eaeaea;
+  height: 700px;
+  width: 95%;
+  margin: auto;
+  margin-bottom: 200px;
+  border-radius: 15px;
+}
+
+/* slideshow */
+.slideshow {
+  position: absolute;
+  top: 7%;
+  right: 16%;
+  width: 1200px;  
 }
 
 
-/* test css for CstmButton */
-.login-button {
-  /*position: relative;
-  left: 470px;*/
-  display: flex;
-  margin-left: 74%;
-}
-
-/* test css for CstmButton */
-.signup-button {
-  /*position: relative;
-  left: 470px;*/
-  display: flex;
-  margin-left: auto;
-}
-
-
-
-
-
-
+/* App CSS */
 
 .App {
   text-align: center;
 }
+
 /* Css that handles the bottom of the page*/
 .App-header {
-  background-color:#2d7046;
+  background-color:#005035;
+  margin: auto;
+  width: 90%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
@@ -42,12 +113,11 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
 /* App link css*/
 .App-link {
   color: #61dafb;
 }
-
-
 
 /*  css for the user profile pic  */
 .userimage{
@@ -65,7 +135,7 @@
 }
 /*This is the css for the body  */
 .textBackground{
-  background-color: #2d7046;
+  background-color: white;
   color: black;
   min-height: 100vh;
 

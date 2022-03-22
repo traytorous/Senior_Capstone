@@ -18,8 +18,8 @@ useEffect(()=>{
     return (
         <div className="textBackground">
         <NavBar1/>
-        <h1> Welcome to Unimeet</h1>
-        <Slideshow/>
+        <h1 className="welcome"> Welcome to Unimeet</h1>
+        <div className="slideshowBox"><Slideshow/></div>
         </div>
         
     );
