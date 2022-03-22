@@ -46,10 +46,13 @@ export const Dashboard = () => {
 
   }, [userdata])
 
+  const navigateSignupPage = () => navigate('/SignupPage');
+
   return (
     <div className="textBackground">
       <NavBar2 />
       <h1> Welcome {localStorage.getItem("username")}</h1>
+      <button onClick={navigateSignupPage}>Sign Up For An Event</button>
       <Mapapi data={{"union":"Cool event is here"}} />
     </div>
 

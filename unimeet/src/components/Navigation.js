@@ -1,25 +1,39 @@
-
-
-
 import {Nav,Container,Navbar,Button } from 'react-bootstrap';
 import {signInGoogle,signOutGoogle,Userphoto} from './Firebase';
 import { useNavigate } from "react-router-dom";
+import CstmButton from './CstmButton';
+
+/* TODO: Decide on style then remove and replace unused imports */
+import UNCCLogo from '../images/UNCC Logo White Cropped.png';
+import UnimeetLogo from '../images/Unimeet_Home.png';
 import logo from "..//images/logo.jpg";
 import uncc2 from "..//images/uncc2.jpg";
 
-
 /*Two navbars. If signed in they switch.*/
- 
-export const NavBar1 = () => {
-return(
-    <Navbar bg="dark" variant="dark">
-    <Container>
-    <Navbar.Brand><img src={logo} height = {120} alt= "logo"/></Navbar.Brand>
-    <img src={uncc2} height = {150} style={{paddingRight: '80px',  }}alt= "uncc2"/>
-    <Button variant="success" onClick={signInGoogle}> Sign in</Button>
-    </Container>
-  </Navbar>
-)
+
+/* TODO: Switch positions of login and signup buttons, may have to be done in css */
+export const NavBar1 = () => { 
+  return (
+    <header className="topbar">
+      <header className="header">
+        <div class="links">
+          <img 
+            className="Unimeet-Logo" 
+            src={UnimeetLogo}
+            height=""
+            width="75"
+          />
+          <img 
+            className="UNCC-Logo" 
+            src={UNCCLogo}
+          />
+          <div className="login-button"><CstmButton text="Log In" variant="white" onClick={signInGoogle}/></div>
+          <div className="signup-button"><CstmButton text="Sign Up" variant="gold"/></div>
+        </div>
+      </header>
+    </header>
+    
+  )
 }
 
 export const NavBar2 = () => {
@@ -40,7 +54,6 @@ export const NavBar2 = () => {
         <Button variant="success" onClick={signOutGoogle}> Sign out</Button>
         </div>
        <Userphoto/>
-      
       </Container>
     </Navbar>
 

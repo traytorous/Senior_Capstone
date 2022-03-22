@@ -1,4 +1,5 @@
 import { NavBar1 } from "../components/Navigation";
+import Slideshow from "../components/Slideshow";
 import { auth } from "../components/Firebase";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -17,10 +18,9 @@ useEffect(()=>{
     return (
         <div className="textBackground">
         <NavBar1/>
-        <h1> Welcome to Unimeet</h1>
+        <h1 className="welcome"> Welcome to Unimeet</h1>
+        <div className="slideshowBox"><Slideshow/></div>
         </div>
-
-
+        
     );
-
 }
