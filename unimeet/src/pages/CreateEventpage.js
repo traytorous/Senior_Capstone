@@ -48,8 +48,8 @@ const EventSignUp = () => {
   const [EventDate, changeEventDate] = useState("No Date");
   const [EventTime, changeEventTime] = useState("No Time");
   const [Contactname, changeContactname] = useState("No contact name");
-  const [Contactemail, changeContactemail] = useState("No Contact Email");
   const [ContactPhonenumber, changeContactPhonenumber] = useState("No event Phone number");
+  const Contactemail = localStorage.getItem("email"); 
   async function send_Wrapper(){
     SendEvent(Location,Eventname,Eventdescription,EventDate,
       EventTime,Contactname,Contactemail,ContactPhonenumber);
@@ -135,10 +135,6 @@ const EventSignUp = () => {
         <Form.Group className="mb-3" controlId="EventContactNameID" >
           <Form.Label> Contact Name </Form.Label>
           <Form.Control onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="EventContactemailID" >
-          <Form.Label> Contact Email  </Form.Label>
-          <Form.Control onChange={(e) => { changeContactemail(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="EventPhoneNumberID" >
           <Form.Label> Contact Phone Number  </Form.Label>
