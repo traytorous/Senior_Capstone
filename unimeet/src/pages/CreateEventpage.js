@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { auth,db } from "../components/Firebase";
 import { doc,updateDoc } from "firebase/firestore"; 
 import { useAuthState } from "react-firebase-hooks/auth";
+import { async } from "@firebase/util";
 
 
 export const CreateEventPage = () => {
@@ -49,6 +50,10 @@ const EventSignUp = () => {
   const [Contactname, changeContactname] = useState("No contact name");
   const [Contactemail, changeContactemail] = useState("No Contact Email");
   const [ContactPhonenumber, changeContactPhonenumber] = useState("No event Phone number");
+  async function send_Wrapper(){
+    SendEvent(Location,Eventname,Eventdescription,EventDate,
+      EventTime,Contactname,Contactemail,ContactPhonenumber);
+  }
   return (
     <div>
       <Form onSubmit={(e) => { e.preventDefault() }}>
@@ -141,8 +146,7 @@ const EventSignUp = () => {
         </Form.Group>   
         
         
-            <Button variant="dark" onClick={SendEvent(Location,Eventname,Eventdescription,EventDate,
-              EventTime,Contactname,Contactemail,ContactPhonenumber)}type="submit">Create Event</Button>
+            <Button variant="dark" onClick={send_Wrapper}type="submit">Create Event</Button>
       </Form>
     </div>
   )
