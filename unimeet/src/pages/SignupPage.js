@@ -69,7 +69,6 @@ const Mapapi = (props) => {
     const [libEvents,changeLibEvents] = useState(props.data['lib']);
     const [coneEvents,changeConeEvents] = useState(props.data['cone']);
     useEffect(() =>{
-      console.log(unionEvents);
       changeUnionEvents(props.data['union']);
     },[props])
    

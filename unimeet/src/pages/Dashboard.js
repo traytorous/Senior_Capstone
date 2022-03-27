@@ -1,5 +1,6 @@
 import { NavBar2 } from '../components/Navigation'
-import { auth } from "../components/Firebase";
+import { auth,db } from "../components/Firebase";
+import { doc,onSnapshot } from "firebase/firestore"; 
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -53,7 +54,7 @@ export const Dashboard = () => {
       <NavBar2 />
       <h1> Welcome {localStorage.getItem("username")}</h1>
       <button onClick={navigateSignupPage}>Sign Up For An Event</button>
-      <Mapapi data={{"union":"Cool event is here"}} />
+      <Mapapi/>
     </div>
 
   );
@@ -63,24 +64,34 @@ export const Dashboard = () => {
 
 
 
-const Mapapi = (props) => {
-  {/* Todo -> Replace if statement with default value types for this component*/ }
-  {/*Need the database object here so I can test the constant data changes*/}
-  {/*Note for Future Tray -> you will get rid of the props all together and rely on testing everything using the database
-    object. You will have to restucture the code. 
-  */}
-  const [unionEvents,changeUnionEvents] = useState(props.data['union']);
-  const [sacEvents,changeSacEvents] = useState(props.data['sac']);
-  const [libEvents,changeLibEvents] = useState(props.data['lib']);
-  const [coneEvents,changeConeEvents] = useState(props.data['cone']);
-  useEffect(() =>{
-    console.log(unionEvents);
-    changeUnionEvents(props.data['union']);
-  },[props])
+const Mapapi = () => {
  
+  /*
+  Note for tray - Come back and change later on with a query instead of calling the onSnapshot option
+  Note for Kerjan -> So what I did was practically create 4 listeners to our database. This in turns will check to see if
+  any data has been changed from the database. If it has it will just overrite the event on the map. It will call the change{location}Events function for everything
+  this way of doing things is not optimal becauase it wastes resources however....I really don't care. This way of doing things will be what we will be using in the future.
+  To have a better understaning of what I did look at the documentation linked below.
+  https://firebase.google.com/docs/firestore/query-data/listen?hl=en&authuser=0
+  */
+  const [unionEvents,changeUnionEvents] = useState();
+  const [sacEvents,changeSacEvents] = useState();
+  const [libEvents,changeLibEvents] = useState();
+  const [coneEvents,changeConeEvents] = useState();
   
+ onSnapshot(doc(db, "Location","cone"), (doc) => {
+      changeConeEvents(doc.data()["Event_Description"]);
+  });
+ onSnapshot(doc(db, "Location","lib"), (doc) => {
+    changeLibEvents(doc.data()["Event_Description"]);
+}); 
+onSnapshot(doc(db, "Location","sac"), (doc) => {
+  changeSacEvents(doc.data()["Event_Description"]);
+});
+ onSnapshot(doc(db, "Location","union"), (doc) => {
+  changeUnionEvents(doc.data()["Event_Description"]);
+});
 
-  
     return (
       <div className="leaflet-container">
         <MapContainer
