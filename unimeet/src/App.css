@@ -3,7 +3,7 @@
 /* entire navbar space */
 .topbar {
   display: flex;
-  background-color: #B9975B;
+  background-color: #b9975b;
   color: white;
   width: 90%;
   margin: auto;
@@ -30,7 +30,6 @@
   float: right;
   margin-top: 24px;
   margin-right: 5%;
-  
 }
 
 /* signup button */
@@ -57,7 +56,6 @@
   height: 75px;
   margin: 3px;
 }
-
 
 /* Front Page */
 
@@ -88,9 +86,15 @@
   position: absolute;
   top: 7%;
   right: 16%;
-  width: 1200px;  
+  width: 1200px;
 }
 
+/* CreateEventpage CSS */
+
+/*Handles the width and centering of each input box*/
+.w-50 {
+  margin: auto;
+}
 
 /* App CSS */
 
@@ -100,7 +104,7 @@
 
 /* Css that handles the bottom of the page*/
 .App-header {
-  background-color:#005035;
+  background-color: #005035;
   margin: auto;
   width: 90%;
   border-top-left-radius: 15px;
@@ -120,33 +124,31 @@
 }
 
 /*  css for the user profile pic  */
-.userimage{
+.userimage {
   border: 2px solid green;
   height: 50px;
   width: 50px;
 }
 /* css for the button */
-.custonbuttom{
+.custonbuttom {
   margin-top: 25px;
   margin-bottom: 15px;
   margin-right: 25px;
   margin-left: 25px;
-
 }
 /*This is the css for the body  */
-.textBackground{
+.textBackground {
   background-color: white;
   color: black;
   min-height: 100vh;
-
 }
 /* This css is for the leaflet container in the dashboard page */
-.leaflet-container{
-  display:flex;
+.leaflet-container {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content:center;
+  align-content: center;
   border: solid black 5px;
-  height:400px;
+  height: 400px;
   width: 100%;
 }
