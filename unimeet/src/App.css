@@ -150,3 +150,9 @@
   height:400px;
   width: 100%;
 }
+
+/* For the sign up page radio buttons*/
+input[type="radio"]{
+  margin: 0 15px 0 15px; /* Create space between radio buttons */
+  margin-right: 2px; /* Keep the radio button and its label closer */
+}

@@ -50,7 +50,19 @@ useEffect(() => {
         <div className="textBackground">
         <NavBar2/>
         <h1> Welcome {localStorage.getItem("username")} to the Sign Up Page</h1>
-        
+        <input type="radio"/>
+        <label><b>Student Union</b></label>
+        <input type="radio"/>
+        <label><b>Atkins Library</b></label>
+        <input type="radio"/>
+        <label><b>Cone Center</b></label>
+        <input type="radio"/>
+        <label><b>Student Activity Center</b></label>
+        <br></br>
+        <br></br>
+        <button type="button">Sign Up</button>
+        <br></br>
+        <br></br>
         <Mapapi data={{"union":"Cool event is here"}} />
         </div>
     );
