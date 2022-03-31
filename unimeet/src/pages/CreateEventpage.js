@@ -3,12 +3,11 @@ This is the Create Event page
 */
 import React, { useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap';
-import { NavBar2 } from "../components/Navigation";
+import { NavBar2, NavBar3 } from "../components/Navigation";
 import { useNavigate } from "react-router-dom";
 import { auth,db } from "../components/Firebase";
 import { doc,updateDoc } from "firebase/firestore"; 
 import { useAuthState } from "react-firebase-hooks/auth";
-import { async } from "@firebase/util";
 
 
 export const CreateEventPage = () => {
@@ -32,7 +31,7 @@ export const CreateEventPage = () => {
   }, [userdata])
   return (
     <div className="textBackground">
-        <NavBar2/>
+        <NavBar3/>
         <h1> Create Events</h1>
         <EventSignUp/>
         </div>
@@ -48,22 +47,18 @@ const EventSignUp = () => {
   const [EventDate, changeEventDate] = useState("No Date");
   const [EventTime, changeEventTime] = useState("No Time");
   const [Contactname, changeContactname] = useState("No contact name");
+  const [Contactemail, changeContactemail] = useState("No Contact Email");
   const [ContactPhonenumber, changeContactPhonenumber] = useState("No event Phone number");
-  const Contactemail = localStorage.getItem("email"); 
-  async function send_Wrapper(){
-    SendEvent(Location,Eventname,Eventdescription,EventDate,
-      EventTime,Contactname,Contactemail,ContactPhonenumber);
-  }
   return (
     <div>
       <Form onSubmit={(e) => { e.preventDefault() }}>
         <Form.Group className="mb-3" controlId="EventNameID" >
           <Form.Label>Event Name</Form.Label>
-          <Form.Control className="w-50" onChange={(e) => { changeEventname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control onChange={(e) => { changeEventname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
       <Form.Group className="mb-3" controlId="EventDetailID">
          <Form.Label>Description</Form.Label>
-         <Form.Control className="w-50" onChange={(e) => {changeEventdescription(e.target.value); } } as="textarea" rows={3}/>
+         <Form.Control onChange={(e) => {changeEventdescription(e.target.value); } } as="textarea" rows={3}/>
   </Form.Group>
   
   <div>
@@ -125,24 +120,29 @@ const EventSignUp = () => {
 
   <Form.Group className="mb-3" controlId="EventDateID" >
           <Form.Label> Event Date </Form.Label>
-          <Form.Control className="w-50" onChange={(e) => { changeEventDate(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control onChange={(e) => { changeEventDate(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="EventTimeID" >
           <Form.Label> Event Time </Form.Label>
-          <Form.Control className="w-50" onChange={(e) => { changeEventTime(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control onChange={(e) => { changeEventTime(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="EventContactNameID" >
           <Form.Label> Contact Name </Form.Label>
-          <Form.Control className="w-50" onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="EventContactemailID" >
+          <Form.Label> Contact Email  </Form.Label>
+          <Form.Control onChange={(e) => { changeContactemail(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="EventPhoneNumberID" >
           <Form.Label> Contact Phone Number  </Form.Label>
-          <Form.Control className="w-50" onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>   
         
         
-            <Button variant="dark" onClick={send_Wrapper}type="submit">Create Event</Button>
+            <Button variant="dark" onClick={SendEvent(Location,Eventname,Eventdescription,EventDate,
+              EventTime,Contactname,Contactemail,ContactPhonenumber)}type="submit">Create Event</Button>
       </Form>
     </div>
   )

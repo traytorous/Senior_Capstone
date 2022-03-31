@@ -42,24 +42,70 @@ export const NavBar2 = () => {
   const navigateCreateEventPate = () => navigate("/CreateEventPage");
   const navigateDashBoard = () =>  navigate('/Dashboard');
   return (
-    <Navbar bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand onClick={navigateDashBoard}> <img src={logo} height = {120} alt= "logo"/></Navbar.Brand>
-        <Nav className="me-auto">
-        <img src={uncc2} height = {150} style={{paddingLeft: '250px',  }}alt= "uncc2"/>
-        </Nav>
-        <div className="custonbuttom">
-          
-        <Button variant="success" onClick={navigateCreateEventPate}> Create Event</Button>&nbsp;&nbsp;&nbsp;
-        <Button variant="success" onClick={signOutGoogle}> Sign out</Button>
-        </div>
-       <Userphoto/>
-      </Container>
-    </Navbar>
 
+      <header className="topbar">
+              <header className="header">
+             
+        <div class="links">
+          <img 
+            className="Unimeet-Logo" 
+            src={UnimeetLogo}
+            height=""
+            width="75"
+            onClick={navigateDashBoard}
+          />
+          <img 
+          className="UNCC-Logo" 
+          src={UNCCLogo}
+        />
+
+        <div className= "userimage"><Userphoto/></div>   
+        <div className="signout-button"><CstmButton text="Sign Out" variant="white" onClick={signOutGoogle}/></div>
+        <div className="createevent-button"><CstmButton text="Create Event" variant="gold" onClick={navigateCreateEventPate}/></div>
+       
+        </div>
+       </header>
+       </header>
+       
   )
 }
 
 
 
+export const NavBar3 = () => {
+  const navigate = useNavigate();
+  
+ const navigateCreateEventPate = () => navigate("/CreateEventPage");
+  const navigateDashBoard = () =>  navigate('/Dashboard');
+  return (
+ 
+      <header className="topbar">
+              <header className="header">
+             
+        <div class="links">
+          <img 
+            className="Unimeet-Logo" 
+            src={UnimeetLogo}
+            height=""
+            width="75"
+            onClick={navigateDashBoard}
+          />
+          <img 
+          className="UNCC-Logo" 
+          src={UNCCLogo}
+        />
+
+        <div className= "userimage"><Userphoto/></div>   
+        <div className="signout-button"><CstmButton text="Sign Out" variant="white" onClick={signOutGoogle}/></div>
+        <div className="home-button"><CstmButton text="Home" variant="gold" onClick={navigateDashBoard}/></div>
+
+       
+        </div>
+       </header>
+       </header>
+       
+
+
+  )
+}
 

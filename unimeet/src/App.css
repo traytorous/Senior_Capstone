@@ -3,9 +3,9 @@
 /* entire navbar space */
 .topbar {
   display: flex;
-  background-color: #b9975b;
+  background-color: #B9975B;
   color: white;
-  width: 90%;
+  width: 99%;  /*changed to 100 to take up the screen willgo over in meeting*/
   margin: auto;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -30,14 +30,17 @@
   float: right;
   margin-top: 24px;
   margin-right: 5%;
+  
 }
 
 /* signup button */
-.signup-button {
+.signup-button { 
   float: right;
   margin-top: 24px;
   margin-right: 1%;
 }
+
+
 
 /* unimeet logo & home button */
 .Unimeet-Logo {
@@ -56,6 +59,7 @@
   height: 75px;
   margin: 3px;
 }
+
 
 /* Front Page */
 
@@ -86,15 +90,9 @@
   position: absolute;
   top: 7%;
   right: 16%;
-  width: 1200px;
+  width: 1200px;  
 }
 
-/* CreateEventpage CSS */
-
-/*Handles the width and centering of each input box*/
-.w-50 {
-  margin: auto;
-}
 
 /* App CSS */
 
@@ -104,9 +102,9 @@
 
 /* Css that handles the bottom of the page*/
 .App-header {
-  background-color: #005035;
+  background-color:#005035;
   margin: auto;
-  width: 90%;
+  width: 99%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   min-height: 10vh;
@@ -118,37 +116,61 @@
   color: white;
 }
 
+
 /* App link css*/
 .App-link {
   color: #61dafb;
 }
 
 /*  css for the user profile pic  */
-.userimage {
-  border: 2px solid green;
+.userimage{
+  float: right;
+  margin-top: 8px;
+  margin-right: 2%;
+ /* border: 2px solid gold;       The borders do not line up currently*/   
   height: 50px;
   width: 50px;
+
 }
+
+/*createevent button*/
+.createevent-button, .home-button {
+  float: right;
+  margin-top: 24px;
+  margin-right: 1%;
+}
+
+/* signout button */
+.signout-button { 
+  display: block;
+  float: right;
+  margin-top: 24px;
+  margin-right: 2%;
+}
+
+
 /* css for the button */
-.custonbuttom {
+.custonbuttom{
   margin-top: 25px;
   margin-bottom: 15px;
   margin-right: 25px;
   margin-left: 25px;
+
 }
 /*This is the css for the body  */
-.textBackground {
+.textBackground{
   background-color: white;
   color: black;
   min-height: 100vh;
+
 }
 /* This css is for the leaflet container in the dashboard page */
-.leaflet-container {
-  display: flex;
+.leaflet-container{
+  display:flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: center;
+  align-content:center;
   border: solid black 5px;
-  height: 400px;
+  height:400px;
   width: 100%;
 }
