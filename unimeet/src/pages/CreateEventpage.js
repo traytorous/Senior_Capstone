@@ -54,11 +54,11 @@ const EventSignUp = () => {
       <Form onSubmit={(e) => { e.preventDefault() }}>
         <Form.Group className="mb-3" controlId="EventNameID" >
           <Form.Label>Event Name</Form.Label>
-          <Form.Control onChange={(e) => { changeEventname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control className="w-50" onChange={(e) => { changeEventname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
       <Form.Group className="mb-3" controlId="EventDetailID">
          <Form.Label>Description</Form.Label>
-         <Form.Control onChange={(e) => {changeEventdescription(e.target.value); } } as="textarea" rows={3}/>
+         <Form.Control className="w-50" onChange={(e) => {changeEventdescription(e.target.value); } } as="textarea" rows={3}/>
   </Form.Group>
   
   <div>
@@ -120,24 +120,24 @@ const EventSignUp = () => {
 
   <Form.Group className="mb-3" controlId="EventDateID" >
           <Form.Label> Event Date </Form.Label>
-          <Form.Control onChange={(e) => { changeEventDate(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control className="w-50" onChange={(e) => { changeEventDate(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="EventTimeID" >
           <Form.Label> Event Time </Form.Label>
-          <Form.Control onChange={(e) => { changeEventTime(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control className="w-50" onChange={(e) => { changeEventTime(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="EventContactNameID" >
           <Form.Label> Contact Name </Form.Label>
-          <Form.Control onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control className="w-50" onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="EventContactemailID" >
           <Form.Label> Contact Email  </Form.Label>
-          <Form.Control onChange={(e) => { changeContactemail(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control className="w-50" onChange={(e) => { changeContactemail(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
         <Form.Group className="mb-3" controlId="EventPhoneNumberID" >
           <Form.Label> Contact Phone Number  </Form.Label>
-          <Form.Control onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
+          <Form.Control className="w-50" onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>   
         
         

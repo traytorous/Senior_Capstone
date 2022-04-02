@@ -4,6 +4,8 @@ import { doc,onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import CstmButton from '../components/CstmButton';
+
 
 /* The lines below are for the map. I would not recommend touching :) */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -53,7 +55,8 @@ export const Dashboard = () => {
     <div className="textBackground">
       <NavBar2 />
       <h1> Welcome {localStorage.getItem("username")}</h1>
-      <button onClick={navigateSignupPage}>Sign Up For An Event</button>
+      <div className="signUpEvent"><CstmButton text="Event Sign Up" variant="gold" onClick={navigateSignupPage}/></div>
+     
       <Mapapi/>
     </div>
 
