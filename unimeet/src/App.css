@@ -94,6 +94,14 @@
 }
 
 
+
+/* CreateEventpage CSS */
+
+/*Handles the width and centering of each input box*/
+.w-50 {
+  margin: auto;
+}
+
 /* App CSS */
 
 .App {
