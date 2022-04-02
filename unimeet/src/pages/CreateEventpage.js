@@ -1,5 +1,3 @@
-/* TESTING GITHUB BRANCHESSSSSSSSSSSS */
-
 /*
 This is the Create Event page
 */
