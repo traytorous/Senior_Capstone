@@ -3,12 +3,11 @@ This is the Create Event page
 */
 import React, { useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap';
-import { NavBar2, NavBar3 } from "../components/Navigation";
+import { NavBar3 } from "../components/Navigation";
 import { useNavigate } from "react-router-dom";
 import { auth,db } from "../components/Firebase";
-import { doc,updateDoc } from "firebase/firestore"; 
+import { doc,updateDoc,collection,getDocs, addDoc, setDoc } from "firebase/firestore"; 
 import { useAuthState } from "react-firebase-hooks/auth";
-
 
 export const CreateEventPage = () => {
   const [didMount, setDidMount] = useState(false); 
@@ -47,8 +46,13 @@ const EventSignUp = () => {
   const [EventDate, changeEventDate] = useState("No Date");
   const [EventTime, changeEventTime] = useState("No Time");
   const [Contactname, changeContactname] = useState("No contact name");
-  const [Contactemail, changeContactemail] = useState("No Contact Email");
   const [ContactPhonenumber, changeContactPhonenumber] = useState("No event Phone number");
+  const [DayOfTheWeek, changeDayOfTheWeek] = useState("Monday");
+  const Contactemail = localStorage.getItem("email"); 
+  async function send_Wrapper(){
+    SendEvent(DayOfTheWeek,Location,Eventname,Eventdescription,EventDate,
+      EventTime,Contactname,Contactemail,ContactPhonenumber);
+  }
   return (
     <div>
       <Form onSubmit={(e) => { e.preventDefault() }}>
@@ -60,14 +64,6 @@ const EventSignUp = () => {
          <Form.Label>Description</Form.Label>
          <Form.Control onChange={(e) => {changeEventdescription(e.target.value); } } as="textarea" rows={3}/>
   </Form.Group>
-  
-  <div>
-          {/**
-           * 
-           * Get rid of the curly braces and put your JSX code here
-           * 
-           */}
-        </div>
 
         {['radio'].map((type) => (
           <div key={`inline-${type}`} className="mb-3">
@@ -107,16 +103,12 @@ const EventSignUp = () => {
               onChange={(e) => (changeLocation(e.currentTarget.value))}
               id={`inline-${type}-4`}
             />
-            <div>
-              {/*
-              
-              Get rid of the curly braces and put your JSX code here
-              
-              */}
-            </div>
           </div>
-          
         ))}
+
+
+
+
 
   <Form.Group className="mb-3" controlId="EventDateID" >
           <Form.Label> Event Date </Form.Label>
@@ -131,18 +123,68 @@ const EventSignUp = () => {
           <Form.Label> Contact Name </Form.Label>
           <Form.Control onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="EventContactemailID" >
-          <Form.Label> Contact Email  </Form.Label>
-          <Form.Control onChange={(e) => { changeContactemail(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
-        </Form.Group>
+        
         <Form.Group className="mb-3" controlId="EventPhoneNumberID" >
           <Form.Label> Contact Phone Number  </Form.Label>
           <Form.Control onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>   
-        
-        
-            <Button variant="dark" onClick={SendEvent(Location,Eventname,Eventdescription,EventDate,
-              EventTime,Contactname,Contactemail,ContactPhonenumber)}type="submit">Create Event</Button>
+            <Button variant="dark" onClick={send_Wrapper}type="submit">Create Event</Button>
+
+
+{['radio'].map((type) => (
+          <div key={`inline-${type}`} className="mb-3">
+            <Form.Check
+              inline
+              label="Monday"
+              name="group2"
+              type={type}
+              value='Monday'
+              id={`inline-${type}-1`}
+              onChange={(e) => (changeDayOfTheWeek(e.currentTarget.value))}
+            />
+            <Form.Check
+              inline
+              label="Tuesday"
+              name="group2"
+              type={type}
+              value='Tuesday'
+              onChange={(e) => (changeDayOfTheWeek(e.currentTarget.value))}
+              id={`inline-${type}-2`}
+            />
+            <Form.Check
+              inline
+              label="Wednesday"
+              name="group2"
+              type={type}
+              value='Wednesday'
+              onChange={(e) => (changeDayOfTheWeek(e.currentTarget.value))}
+              id={`inline-${type}-3`}
+            />
+            <Form.Check
+              inline
+              label="Thursday"
+              name="group2"
+              type={type}
+              value='Thursday'
+              onChange={(e) => (changeDayOfTheWeek(e.currentTarget.value))}
+              id={`inline-${type}-4`}
+            />
+            <Form.Check
+              inline
+              label="Friday"
+              name="group2"
+              type={type}
+              value='Friday'
+              onChange={(e) => (changeDayOfTheWeek(e.currentTarget.value))}
+              id={`inline-${type}-4`}
+            />
+
+
+          </div>
+        ))}
+
+
+
       </Form>
     </div>
   )
@@ -150,16 +192,16 @@ const EventSignUp = () => {
 
 }
 
- async function SendEvent (location,Eventname,Eventdescription,EventDate,EventTime,Contactname,Contactemail,ContactPhonenumber) {
-  await updateDoc(doc(db, "Location", location), {
-    "Event_Name": Eventname,
+ async function SendEvent (dayoftheweek,location,Eventname,Eventdescription,EventDate,EventTime,Contactname,Contactemail,ContactPhonenumber) {
+  await updateDoc(doc(db, "Location", location,dayoftheweek,"Events"),{
+     [Eventname] : {
     "Event_Description":Eventdescription,
     "Event_Date":EventDate,
     "Event_Time":EventTime,
     "Contact_name":Contactname,
     "Contact_email":Contactemail,
     "Contact_number":ContactPhonenumber
+     }
   });
-
 
 }
