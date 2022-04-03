@@ -200,7 +200,8 @@ const EventSignUp = () => {
     "Event_Time":EventTime,
     "Contact_name":Contactname,
     "Contact_email":Contactemail,
-    "Contact_number":ContactPhonenumber
+    "Contact_number":ContactPhonenumber,
+    "NumberofPeople":[]
      }
   });
 
