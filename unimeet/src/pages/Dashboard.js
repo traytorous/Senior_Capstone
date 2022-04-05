@@ -4,7 +4,7 @@ import { doc,onSnapshot } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {updateDoc,collection,getDocs, addDoc, setDoc } from "firebase/firestore"; 
+import {updateDoc,collection,getDocs, addDoc, setDoc,getDoc } from "firebase/firestore"; 
 
 /* The lines below are for the map. I would not recommend touching :) */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -61,16 +61,7 @@ export const Dashboard = () => {
   );
 
 }
-async function getData(){
-  let data = await getDocs(collection(db,"Location","cone","Monday"));
-  data.forEach((doc) => {
-    Object.entries(doc.data()).forEach(
-      (e)=> console.log(e[0])
-    );
-    
-  });
-  
-   }
+
 
 
 
@@ -84,11 +75,35 @@ const Mapapi = () => {
   To have a better understaning of what I did look at the documentation linked below.
   https://firebase.google.com/docs/firestore/query-data/listen?hl=en&authuser=0
   */
+ 
   const [unionEvents,changeUnionEvents] = useState();
   const [sacEvents,changeSacEvents] = useState();
   const [libEvents,changeLibEvents] = useState();
   const [coneEvents,changeConeEvents] = useState();
   
+  useEffect(async ()=>{
+   changeConeEvents(await getData())
+
+  }
+    
+    
+    ,[])
+  async function getData(){
+    let data = await getDoc(doc(db,"Location","cone","Monday","Events"));
+    let test = Object.entries(data.data());
+    let testarray = []
+   if(typeof test != undefined){
+    test.forEach((e)=>{
+      testarray.push(e[0]);
+    }
+    )
+  }
+  return testarray
+    
+     }
+
+     console.log(coneEvents)
+
  onSnapshot(doc(db, "Location","cone"), (doc) => {
       changeConeEvents(doc.data()["Event_Description"]);
   });
