@@ -5,7 +5,7 @@
   display: flex;
   background-color: #B9975B;
   color: white;
-  width: 90%;
+  width: 99%;  /*changed to 100 to take up the screen willgo over in meeting*/
   margin: auto;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -34,11 +34,13 @@
 }
 
 /* signup button */
-.signup-button {
+.signup-button { 
   float: right;
   margin-top: 24px;
   margin-right: 1%;
 }
+
+
 
 /* unimeet logo & home button */
 .Unimeet-Logo {
@@ -102,7 +104,7 @@
 .App-header {
   background-color:#005035;
   margin: auto;
-  width: 90%;
+  width: 99%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   min-height: 10vh;
@@ -114,6 +116,7 @@
   color: white;
 }
 
+
 /* App link css*/
 .App-link {
   color: #61dafb;
@@ -121,10 +124,31 @@
 
 /*  css for the user profile pic  */
 .userimage{
-  border: 2px solid green;
+  float: right;
+  margin-top: 8px;
+  margin-right: 2%;
+ /* border: 2px solid gold;       The borders do not line up currently*/   
   height: 50px;
   width: 50px;
+
 }
+
+/*createevent button*/
+.createevent-button, .home-button {
+  float: right;
+  margin-top: 24px;
+  margin-right: 1%;
+}
+
+/* signout button */
+.signout-button { 
+  display: block;
+  float: right;
+  margin-top: 24px;
+  margin-right: 2%;
+}
+
+
 /* css for the button */
 .custonbuttom{
   margin-top: 25px;
