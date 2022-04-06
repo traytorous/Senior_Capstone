@@ -6,7 +6,7 @@ import { Form, Button } from 'react-bootstrap';
 import { NavBar3 } from "../components/Navigation";
 import { useNavigate } from "react-router-dom";
 import { auth,db } from "../components/Firebase";
-import { doc,updateDoc,collection,getDocs, addDoc, setDoc } from "firebase/firestore"; 
+import { doc,updateDoc} from "firebase/firestore"; 
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const CreateEventPage = () => {
@@ -48,7 +48,23 @@ const EventSignUp = () => {
   const [Contactname, changeContactname] = useState("No contact name");
   const [ContactPhonenumber, changeContactPhonenumber] = useState("No event Phone number");
   const [DayOfTheWeek, changeDayOfTheWeek] = useState("Monday");
-  const Contactemail = localStorage.getItem("email"); 
+  const Contactemail = localStorage.getItem("email");
+  
+  async function SendEvent (dayoftheweek,location,Eventname,Eventdescription,EventDate,EventTime,Contactname,Contactemail,ContactPhonenumber) {
+    await updateDoc(doc(db, "Location", location,dayoftheweek,"Events"),{
+       [Eventname] : {
+      "Event_Description":Eventdescription,
+      "Event_Date":EventDate,
+      "Event_Time":EventTime,
+      "Contact_name":Contactname,
+      "Contact_email":Contactemail,
+      "Contact_number":ContactPhonenumber,
+      "NumberofPeople":[]
+       }
+    });
+  
+  }
+
   async function send_Wrapper(){
     SendEvent(DayOfTheWeek,Location,Eventname,Eventdescription,EventDate,
       EventTime,Contactname,Contactemail,ContactPhonenumber);
@@ -192,17 +208,4 @@ const EventSignUp = () => {
 
 }
 
- async function SendEvent (dayoftheweek,location,Eventname,Eventdescription,EventDate,EventTime,Contactname,Contactemail,ContactPhonenumber) {
-  await updateDoc(doc(db, "Location", location,dayoftheweek,"Events"),{
-     [Eventname] : {
-    "Event_Description":Eventdescription,
-    "Event_Date":EventDate,
-    "Event_Time":EventTime,
-    "Contact_name":Contactname,
-    "Contact_email":Contactemail,
-    "Contact_number":ContactPhonenumber,
-    "NumberofPeople":[]
-     }
-  });
-
-}
+ 

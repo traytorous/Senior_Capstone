@@ -1,10 +1,9 @@
 import { NavBar2 } from '../components/Navigation'
 import { auth,db } from "../components/Firebase";
-import { doc,onSnapshot } from "firebase/firestore"; 
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import {updateDoc,collection,getDocs, addDoc, setDoc,getDoc } from "firebase/firestore"; 
+import { getDoc,doc } from "firebase/firestore"; 
 
 /* The lines below are for the map. I would not recommend touching :) */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -67,55 +66,59 @@ export const Dashboard = () => {
 
 const Mapapi = () => {
  
-  /*
-  Note for tray - Come back and change later on with a query instead of calling the onSnapshot option
-  Note for Kerjan -> So what I did was practically create 4 listeners to our database. This in turns will check to see if
-  any data has been changed from the database. If it has it will just overrite the event on the map. It will call the change{location}Events function for everything
-  this way of doing things is not optimal becauase it wastes resources however....I really don't care. This way of doing things will be what we will be using in the future.
-  To have a better understaning of what I did look at the documentation linked below.
-  https://firebase.google.com/docs/firestore/query-data/listen?hl=en&authuser=0
-  */
- 
-  const [unionEvents,changeUnionEvents] = useState();
-  const [sacEvents,changeSacEvents] = useState();
-  const [libEvents,changeLibEvents] = useState();
-  const [coneEvents,changeConeEvents] = useState();
+  const [unionEvents,changeUnionEvents] = useState([]);
+  const [sacEvents,changeSacEvents] = useState([]);
+  const [libEvents,changeLibEvents] = useState([]);
+  const [coneEvents,changeConeEvents] = useState([]);
   
   useEffect(async ()=>{
-   changeConeEvents(await getData())
-
+   changeConeEvents(await getDataCone());
+   changeUnionEvents(await getDataUnion());
+   changeSacEvents(await getDataSac());
+   changeLibEvents(await getDataLib());
   }
     
     
     ,[])
-  async function getData(){
-    let data = await getDoc(doc(db,"Location","cone","Monday","Events"));
-    let test = Object.entries(data.data());
-    let testarray = []
-   if(typeof test != undefined){
-    test.forEach((e)=>{
-      testarray.push(e[0]);
-    }
-    )
-  }
-  return testarray
+    async function getDataLib(){
+      let monday = Object.keys((await getDoc(doc(db,"Location","lib","Monday","Events"))).data());
+      let tuesday = Object.keys((await getDoc(doc(db,"Location","lib","Tuesday","Events"))).data());
+      let wensday = Object.keys((await getDoc(doc(db,"Location","lib","Wednesday","Events"))).data());
+      let thursday = Object.keys((await getDoc(doc(db,"Location","lib","Thursday","Events"))).data());
+      let friday = Object.keys((await getDoc(doc(db,"Location","lib","Friday","Events"))).data());
+      return [...monday,...tuesday,...wensday,...thursday,...friday];
+      
+       }
+    
+  async function getDataCone(){
+    let monday = Object.keys((await getDoc(doc(db,"Location","cone","Monday","Events"))).data());
+    let tuesday = Object.keys((await getDoc(doc(db,"Location","cone","Tuesday","Events"))).data());
+    let wensday = Object.keys((await getDoc(doc(db,"Location","cone","Wednesday","Events"))).data());
+    let thursday = Object.keys((await getDoc(doc(db,"Location","cone","Thursday","Events"))).data());
+    let friday = Object.keys((await getDoc(doc(db,"Location","cone","Friday","Events"))).data());
+    return [...monday,...tuesday,...wensday,...thursday,...friday];
     
      }
 
-     console.log(coneEvents)
+    async function getDataUnion(){
+      let monday = Object.keys((await getDoc(doc(db,"Location","union","Monday","Events"))).data());
+      let tuesday = Object.keys((await getDoc(doc(db,"Location","union","Tuesday","Events"))).data());
+      let wensday = Object.keys((await getDoc(doc(db,"Location","union","Wednesday","Events"))).data());
+      let thursday = Object.keys((await getDoc(doc(db,"Location","union","Thursday","Events"))).data());
+      let friday = Object.keys((await getDoc(doc(db,"Location","union","Friday","Events"))).data());
+      return [...monday,...tuesday,...wensday,...thursday,...friday];
+      
+       }
 
- onSnapshot(doc(db, "Location","cone"), (doc) => {
-      changeConeEvents(doc.data()["Event_Description"]);
-  });
- onSnapshot(doc(db, "Location","lib"), (doc) => {
-    changeLibEvents(doc.data()["Event_Description"]);
-}); 
-onSnapshot(doc(db, "Location","sac"), (doc) => {
-  changeSacEvents(doc.data()["Event_Description"]);
-});
- onSnapshot(doc(db, "Location","union"), (doc) => {
-  changeUnionEvents(doc.data()["Event_Description"]);
-});
+       async function getDataSac(){
+        let monday = Object.keys((await getDoc(doc(db,"Location","sac","Monday","Events"))).data());
+        let tuesday = Object.keys((await getDoc(doc(db,"Location","sac","Tuesday","Events"))).data());
+        let wensday = Object.keys((await getDoc(doc(db,"Location","sac","Wednesday","Events"))).data());
+        let thursday = Object.keys((await getDoc(doc(db,"Location","sac","Thursday","Events"))).data());
+        let friday = Object.keys((await getDoc(doc(db,"Location","sac","Friday","Events"))).data());
+        return [...monday,...tuesday,...wensday,...thursday,...friday];
+        
+         }
 
     return (
       <div className="leaflet-container">
@@ -131,25 +134,25 @@ onSnapshot(doc(db, "Location","sac"), (doc) => {
           <Marker position={student_union}>
             <Popup>
               Student Union <br/>
-              {(unionEvents) ?? <p>No events</p>}
+              {unionEvents.map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={sac}>
             <Popup>
               Student Activity Center<br/>
-              {sacEvents ?? <p>No events</p>}
+              {sacEvents.map((e,idx) =><li key={idx}>{e}</li>) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={atkins_library}>
             <Popup>
               Atkins Library<br/>
-              {libEvents?? <p>No events</p>}
+              {libEvents.map((e,idx)=><li key={idx}>{e}</li>)?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={cone}>
             <Popup>
               Cone University Center<br/>
-              {coneEvents?? <p>No events</p>}
+              {coneEvents.map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
             </Popup>
           </Marker>
         </MapContainer>
