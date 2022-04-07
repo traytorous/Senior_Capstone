@@ -86,8 +86,7 @@ const Mapapi = () => {
       let wensday = Object.keys((await getDoc(doc(db,"Location","lib","Wednesday","Events"))).data());
       let thursday = Object.keys((await getDoc(doc(db,"Location","lib","Thursday","Events"))).data());
       let friday = Object.keys((await getDoc(doc(db,"Location","lib","Friday","Events"))).data());
-      return [...monday,...tuesday,...wensday,...thursday,...friday];
-      
+      return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];      
        }
     
   async function getDataCone(){
@@ -96,7 +95,7 @@ const Mapapi = () => {
     let wensday = Object.keys((await getDoc(doc(db,"Location","cone","Wednesday","Events"))).data());
     let thursday = Object.keys((await getDoc(doc(db,"Location","cone","Thursday","Events"))).data());
     let friday = Object.keys((await getDoc(doc(db,"Location","cone","Friday","Events"))).data());
-    return [...monday,...tuesday,...wensday,...thursday,...friday];
+    return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];
     
      }
 
@@ -106,8 +105,7 @@ const Mapapi = () => {
       let wensday = Object.keys((await getDoc(doc(db,"Location","union","Wednesday","Events"))).data());
       let thursday = Object.keys((await getDoc(doc(db,"Location","union","Thursday","Events"))).data());
       let friday = Object.keys((await getDoc(doc(db,"Location","union","Friday","Events"))).data());
-      return [...monday,...tuesday,...wensday,...thursday,...friday];
-      
+      return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];      
        }
 
        async function getDataSac(){
@@ -116,8 +114,7 @@ const Mapapi = () => {
         let wensday = Object.keys((await getDoc(doc(db,"Location","sac","Wednesday","Events"))).data());
         let thursday = Object.keys((await getDoc(doc(db,"Location","sac","Thursday","Events"))).data());
         let friday = Object.keys((await getDoc(doc(db,"Location","sac","Friday","Events"))).data());
-        return [...monday,...tuesday,...wensday,...thursday,...friday];
-        
+        return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];        
          }
 
     return (
@@ -134,25 +131,65 @@ const Mapapi = () => {
           <Marker position={student_union}>
             <Popup>
               Student Union <br/>
-              {unionEvents.map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p> Monday </p>
+              {unionEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Tuesday</p>
+              {unionEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Wednesday</p>
+              {unionEvents[2].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Thursday</p>
+              {unionEvents[3].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Friday</p>
+              {unionEvents[4].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={sac}>
             <Popup>
               Student Activity Center<br/>
-              {sacEvents.map((e,idx) =><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p> Monday </p>
+              {sacEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Tuesday</p>
+              {sacEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Wednesday</p>
+              {sacEvents[2].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Thursday</p>
+              {sacEvents[3].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Friday</p>
+              {sacEvents[4].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={atkins_library}>
             <Popup>
               Atkins Library<br/>
-              {libEvents.map((e,idx)=><li key={idx}>{e}</li>)?? <p>No events</p>}
+              <p> Monday </p>
+              {libEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Tuesday</p>
+              {libEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Wednesday</p>
+              {libEvents[2].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Thursday</p>
+              {libEvents[3].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Friday</p>
+              {libEvents[4].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={cone}>
             <Popup>
               Cone University Center<br/>
-              {coneEvents.map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p> Monday </p>
+              {coneEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Tuesday</p>
+              {coneEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Wednesday</p>
+              {coneEvents[2].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Thursday</p>
+              {coneEvents[3].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              <p>Friday</p>
+              {coneEvents[4].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+
+
+
+
             </Popup>
           </Marker>
         </MapContainer>
