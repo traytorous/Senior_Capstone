@@ -16,7 +16,7 @@ export const NavBar1 = () => {
   return (
     <header className="topbar">
       <header className="header">
-        <div class="links">
+        <div className="links">
           <img 
             className="Unimeet-Logo" 
             src={UnimeetLogo}
@@ -46,7 +46,7 @@ export const NavBar2 = () => {
       <header className="topbar">
               <header className="header">
              
-        <div class="links">
+        <div className="links">
           <img 
             className="Unimeet-Logo" 
             src={UnimeetLogo}
@@ -82,7 +82,7 @@ export const NavBar3 = () => {
       <header className="topbar">
               <header className="header">
              
-        <div class="links">
+        <div className="links">
           <img 
             className="Unimeet-Logo" 
             src={UnimeetLogo}

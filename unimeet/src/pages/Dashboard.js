@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import CstmButton from '../components/CstmButton';
 
+import {updateDoc,collection,getDocs, addDoc, setDoc } from "firebase/firestore"; 
 
 /* The lines below are for the map. I would not recommend touching :) */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -63,7 +64,16 @@ export const Dashboard = () => {
   );
 
 }
-
+async function getData(){
+  let data = await getDocs(collection(db,"Location","cone","Monday"));
+  data.forEach((doc) => {
+    Object.entries(doc.data()).forEach(
+      (e)=> console.log(e[0])
+    );
+    
+  });
+  
+   }
 
 
 
