@@ -1,27 +1,81 @@
 /* Navigation Bar */
 
+/* navbar when not logged in */
 /* entire navbar space */
-.topbar {
+.topbar1 {
   display: flex;
+  position: relative;
   background-color: #B9975B;
   color: white;
   width: 99%;  /*changed to 100 to take up the screen willgo over in meeting*/
   margin: auto;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
-  height: 100px;
+  height: 94px;
 }
 
 /* main section */
-.header {
+.header1 {
   position: relative;
   background-color: #005035;
   color: white;
   width: 100%;
   margin-top: 0;
-  margin-bottom: 17px;
+  margin-bottom: 11px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+
+/* navbar when logged in */
+/* entire navbar space */
+.topbar2 {
+  display: flex;
+  position: relative;
+  background-color: #B9975B;
+  color: white;
+  width: 99%;  /*changed to 100 to take up the screen willgo over in meeting*/
+  margin: auto;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  height: 105px;
+}
+
+/* main section */
+.header2 {
+  position: relative;
+  background-color: #005035;
+  color: white;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 22px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.pages {
+  position: absolute;
+  color: white;
+  width: 100%;
+  bottom: 0%;
+  height: 2em;
+}
+
+.navHome {
+  position: absolute;
+  right: 15em;
+  bottom: 0%;
+}
+
+.navMyEvents {
+  position: absolute;
+  right: 9em;
+  bottom: 0%;
+}
+
+.navCreateEvent {
+  position: absolute;
+  right: 2.5em;
+  bottom: 0%;
 }
 
 /* login button */
@@ -39,8 +93,6 @@
   margin-top: 24px;
   margin-right: 1%;
 }
-
-
 
 /* unimeet logo & home button */
 .Unimeet-Logo {

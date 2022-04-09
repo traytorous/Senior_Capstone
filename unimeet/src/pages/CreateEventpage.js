@@ -3,7 +3,7 @@ This is the Create Event page
 */
 import React, { useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap';
-import { NavBar3 } from "../components/Navigation";
+import { NavBar2 } from "../components/Navigation";
 import { useNavigate } from "react-router-dom";
 import { auth,db } from "../components/Firebase";
 import { doc,updateDoc} from "firebase/firestore"; 
@@ -30,7 +30,7 @@ export const CreateEventPage = () => {
   }, [userdata])
   return (
     <div className="textBackground">
-        <NavBar3/>
+        <NavBar2/>
         <h1> Create Events</h1>
         <EventSignUp/>
         </div>
