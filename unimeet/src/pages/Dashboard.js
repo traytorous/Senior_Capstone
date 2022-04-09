@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import CstmButton from '../components/CstmButton';
 import { getDoc,doc } from "firebase/firestore"; 
+import MapEvent from '../components/MapEvent';
 
 /* The lines below are for the map. I would not recommend touching :) */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'

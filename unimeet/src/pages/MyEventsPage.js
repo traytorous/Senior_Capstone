@@ -7,6 +7,7 @@ import { auth } from "../components/Firebase";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import MyEvent from '../components/MyEvent';
 
 
 export const MyEventsPage = () => {
