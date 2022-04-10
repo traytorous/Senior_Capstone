@@ -58,7 +58,15 @@ export const Dashboard = () => {
   );
 
 }
+export const ConeList = async () =>{    
+  let test = (await getDoc(doc(db,"Location","cone","Monday","Events"))).data();   
+  Object.entries(test).forEach((e)=>{     
+    console.log(e[1].Event_Description)     
+    console.log(e[1].NumberofPeople.length)       
+   })    
+  }
 
+ConeList();
 
 
 
@@ -175,7 +183,6 @@ const Mapapi = () => {
             <Popup>
               Cone University Center<br/>
               <p> Monday </p>
-              {console.log(coneEvents[0])}
               {coneEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
               <p>Tuesday</p>
               {coneEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
