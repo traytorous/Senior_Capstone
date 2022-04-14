@@ -1,17 +1,18 @@
 /* Component for putting formatted events in a pin menu on the Dashboard.
 This is how to use it.
-<MapEvent title="Test" date="Apr 9" time="11:12 AM" /> */
+<MapEvent event={e} /> 
+where e is an event*/
 
-/* TODO: remove testing borders and correct how data is receieved and spat out*/
+/* TODO: remove testing borders*/
 const MapEvent = (props) => {
-    const { title, date, time } = props
+    const { event } = props
     return (
         <>
         <style type="text/css">
             {`
             .popup-event {
                 position: relative;
-                border: 4px solid gold; 
+                border: 1px solid grey; 
                 height: 7em;
                 width: 18em;
             }
@@ -20,7 +21,6 @@ const MapEvent = (props) => {
                 position: absolute;
                 height: 100%;
                 width: 40%;
-                border: 2px solid blue;
             }
               
             .popup-box2 {
@@ -28,12 +28,11 @@ const MapEvent = (props) => {
                 height: 100%;
                 right: 0%;
                 width: 60%;
-                border: 2px solid red;
             }
               
             .popup-icon {
                 position: absolute;
-                border: 2px solid black;
+                border: 1px solid grey;
                 height: 100%;
                 width: 100%;
                 text-align: center;
@@ -64,11 +63,11 @@ const MapEvent = (props) => {
 
         <div className="popup-event">
             <div className="popup-box1">
-                <div className="popup-icon">icon</div>
+                <div className="popup-icon"></div>
             </div>
             <div className="popup-box2">
-                <div className="popup-name">{title}</div>
-                <div className="popup-time">{date} @ {time}</div>
+                <div className="popup-name">{event}</div>
+                <div className="popup-time">{event.Event_Date} @ {event.Event_Time}</div>
             </div>
         </div>
         </>

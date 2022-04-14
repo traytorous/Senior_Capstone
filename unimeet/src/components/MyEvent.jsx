@@ -1,10 +1,11 @@
 /* Component for putting formatted events on the My Events page.
 This is how to use it.
-<MyEvent title="Test" date="Apr 9" time="11:12 AM" /> */
+<MyEvent event={e} /> 
+where e is an event*/
 
 /* TODO: change px to em, remove testing borders and correct how data is receieved and spat out*/
 const MyEvent = (props) => {
-    const { title, date, time } = props
+    const { event } = props
     return (
         <>
         <style type="text/css">
@@ -71,8 +72,8 @@ const MyEvent = (props) => {
                 <div className="myevent-icon">icon</div>
             </div>
             <div className="myevent-box2">
-                <div className="myevent-name">{title}</div>
-                <div className="myevent-time">{date} @ {time}</div>
+                <div className="myevent-name">{event}</div>
+                <div className="myevent-time">{event.Event_Date} @ {event.Event_Time}</div>
             </div>
         </div>
         </>

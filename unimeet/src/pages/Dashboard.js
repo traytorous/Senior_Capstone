@@ -133,45 +133,45 @@ const Mapapi = () => {
             <Popup>
               Student Union <br/>
               <p> Monday </p>
-              {unionEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {unionEvents[0].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Tuesday</p>
-              {unionEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {unionEvents[1].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Wednesday</p>
-              {unionEvents[2].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {unionEvents[2].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Thursday</p>
-              {unionEvents[3].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {unionEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Friday</p>
-              {unionEvents[4].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {unionEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={sac}>
             <Popup>
               Student Activity Center<br/>
               <p> Monday </p>
-              {sacEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {sacEvents[0].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Tuesday</p>
-              {sacEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {sacEvents[1].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Wednesday</p>
-              {sacEvents[2].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {sacEvents[2].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Thursday</p>
-              {sacEvents[3].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {sacEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Friday</p>
-              {sacEvents[4].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {sacEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={atkins_library}>
             <Popup>
               Atkins Library<br/>
               <p> Monday </p>
-              {libEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {libEvents[0].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Tuesday</p>
-              {libEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {libEvents[1].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Wednesday</p>
-              {libEvents[2].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {libEvents[2].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Thursday</p>
-              {libEvents[3].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {libEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Friday</p>
-              {libEvents[4].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {libEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
             </Popup>
           </Marker>
           <Marker position={cone}>
@@ -179,15 +179,15 @@ const Mapapi = () => {
               Cone University Center<br/>
               <p> Monday </p>
               {console.log(coneEvents[0])}
-              {coneEvents[0].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {coneEvents[0].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Tuesday</p>
-              {coneEvents[1].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {coneEvents[1].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Wednesday</p>
-              {coneEvents[2].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {coneEvents[2].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Thursday</p>
-              {coneEvents[3].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {coneEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Friday</p>
-              {coneEvents[4].map((e,idx)=><li key={idx}>{e}</li>) ?? <p>No events</p>}
+              {coneEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
 
 
 
