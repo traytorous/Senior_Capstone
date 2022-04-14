@@ -44,7 +44,7 @@ const CstmButton = (props) => {
             }
 
             .btn-xl {
-                width: 800px;
+                width: 25em;
             }
             `}
         </style>

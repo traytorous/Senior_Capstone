@@ -6,6 +6,8 @@ import {Dashboard} from './pages/Dashboard';
 import {CreateEventPage} from './pages/CreateEventpage';
 import {SignupPage} from './pages/SignupPage';
 import {MyEventsPage} from './pages/MyEventsPage';
+import {EventPage} from './pages/EventPage';
+
 function App() {
   return (
     <div className="App">
@@ -16,6 +18,7 @@ function App() {
           <Route exact path="/CreateEventPage" element={<CreateEventPage/>}/>
           <Route exact path="/SignupPage" element={<SignupPage/>}/>
           <Route exact path="/MyEventsPage" element={<MyEventsPage/>}/>
+          <Route exact path="/EventPage" element={<EventPage/>}/>
         </Routes>
       </Router>
       <header className="App-header">

@@ -66,6 +66,15 @@
   bottom: 0%;
 }
 
+.titlebox {
+  position: relative;
+  color: white;
+  background-color: #005035; 
+  height: 50em;
+  width: 50em;
+  margin: auto;
+}
+
 .navMyEvents {
   position: absolute;
   right: 9em;
