@@ -1,9 +1,9 @@
 import { NavBar2 } from '../components/Navigation'
-import { auth,db } from "../components/Firebase";
+import { auth, db } from "../components/Firebase";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getDoc,doc } from "firebase/firestore"; 
+import { getDoc, doc } from "firebase/firestore";
 
 /* The lines below are for the map. I would not recommend touching :) */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -26,13 +26,13 @@ const cone = [35.30544458961595, -80.73322067039553];
 
 
 export const Dashboard = () => {
-  const [didMount, setDidMount] = useState(false); 
+  const [didMount, setDidMount] = useState(false);
   const navigate = useNavigate();
   const [userdata] = useAuthState(auth);
   useEffect(() => {
 
     setDidMount(true);
-    if(!didMount) {
+    if (!didMount) {
       return null;
     }
 
@@ -41,7 +41,7 @@ export const Dashboard = () => {
       navigate('/')
 
     }
-    
+
 
   }, [userdata])
 
@@ -52,7 +52,7 @@ export const Dashboard = () => {
       <NavBar2 />
       <h1> Welcome {localStorage.getItem("username")}</h1>
       <button onClick={navigateSignupPage}>Sign Up For An Event</button>
-      <Mapapi/>
+      <Mapapi />
     </div>
 
   );
@@ -65,245 +65,247 @@ Passing onc piece of data is possible. However since it's a large more complex d
 There also would lead to more complex code due to the fact that we would have to deal with promises without the help of (async/await) 
 If anyone wants to try you are welcome to. 
 */
-export async function getDataLib(){
-  let monday = Object.entries((await getDoc(doc(db,"Location","lib","Monday","Events"))).data());
-  let tuesday = Object.entries((await getDoc(doc(db,"Location","lib","Tuesday","Events"))).data());
-  let wensday = Object.entries((await getDoc(doc(db,"Location","lib","Wednesday","Events"))).data());
-  let thursday = Object.entries((await getDoc(doc(db,"Location","lib","Thursday","Events"))).data());
-  let friday = Object.entries((await getDoc(doc(db,"Location","lib","Friday","Events"))).data());
-  return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];      
-   }
+export async function getDataLib() {
+  let monday = Object.entries((await getDoc(doc(db, "Location", "lib", "Monday", "Events"))).data());
+  let tuesday = Object.entries((await getDoc(doc(db, "Location", "lib", "Tuesday", "Events"))).data());
+  let wensday = Object.entries((await getDoc(doc(db, "Location", "lib", "Wednesday", "Events"))).data());
+  let thursday = Object.entries((await getDoc(doc(db, "Location", "lib", "Thursday", "Events"))).data());
+  let friday = Object.entries((await getDoc(doc(db, "Location", "lib", "Friday", "Events"))).data());
+  return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
+}
 
-export async function getDataCone(){
-let monday = Object.entries((await getDoc(doc(db,"Location","cone","Monday","Events"))).data());
-let tuesday = Object.entries((await getDoc(doc(db,"Location","cone","Tuesday","Events"))).data());
-let wensday = Object.entries((await getDoc(doc(db,"Location","cone","Wednesday","Events"))).data());
-let thursday = Object.entries((await getDoc(doc(db,"Location","cone","Thursday","Events"))).data());
-let friday = Object.entries((await getDoc(doc(db,"Location","cone","Friday","Events"))).data());
-return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];
+export async function getDataCone() {
+  let monday = Object.entries((await getDoc(doc(db, "Location", "cone", "Monday", "Events"))).data());
+  let tuesday = Object.entries((await getDoc(doc(db, "Location", "cone", "Tuesday", "Events"))).data());
+  let wensday = Object.entries((await getDoc(doc(db, "Location", "cone", "Wednesday", "Events"))).data());
+  let thursday = Object.entries((await getDoc(doc(db, "Location", "cone", "Thursday", "Events"))).data());
+  let friday = Object.entries((await getDoc(doc(db, "Location", "cone", "Friday", "Events"))).data());
+  return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
 
- }
-
-
-
-export async function getDataSac(){
-    let monday = Object.entries((await getDoc(doc(db,"Location","sac","Monday","Events"))).data());
-    let tuesday = Object.entries((await getDoc(doc(db,"Location","sac","Tuesday","Events"))).data());
-    let wensday = Object.entries((await getDoc(doc(db,"Location","sac","Wednesday","Events"))).data());
-    let thursday = Object.entries((await getDoc(doc(db,"Location","sac","Thursday","Events"))).data());
-    let friday = Object.entries((await getDoc(doc(db,"Location","sac","Friday","Events"))).data());
-    return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];        
-     }
-
-
-export async function getDataUnion(){
-      let monday = Object.entries((await getDoc(doc(db,"Location","union","Monday","Events"))).data());
-      let tuesday = Object.entries((await getDoc(doc(db,"Location","union","Tuesday","Events"))).data());
-      let wensday = Object.entries((await getDoc(doc(db,"Location","union","Wednesday","Events"))).data());
-      let thursday = Object.entries((await getDoc(doc(db,"Location","union","Thursday","Events"))).data());
-      let friday = Object.entries((await getDoc(doc(db,"Location","union","Friday","Events"))).data());
-      return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];      
-       }
+}
 
 
 
+export async function getDataSac() {
+  let monday = Object.entries((await getDoc(doc(db, "Location", "sac", "Monday", "Events"))).data());
+  let tuesday = Object.entries((await getDoc(doc(db, "Location", "sac", "Tuesday", "Events"))).data());
+  let wensday = Object.entries((await getDoc(doc(db, "Location", "sac", "Wednesday", "Events"))).data());
+  let thursday = Object.entries((await getDoc(doc(db, "Location", "sac", "Thursday", "Events"))).data());
+  let friday = Object.entries((await getDoc(doc(db, "Location", "sac", "Friday", "Events"))).data());
+  return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
+}
 
-const Mapapi = () => {  
-  /* The place holder variable is there so that when function below tries to iterate through the object to get the data it does not error out
-  if it is not there the state will become undefined and will then error out. I made the Placeholder variable look like a mock up of what the database looks like */
 
-  /* You cannot pass data into this object with props because the data will return back as a promise. The promise would then need to be maniuplated using UseEffect and would lead to more complex code*/
-  /* Would have to pretty much go back to use the promise syntax instead of using (async/await) */
-const placeholder = [
+export async function getDataUnion() {
+  let monday = Object.entries((await getDoc(doc(db, "Location", "union", "Monday", "Events"))).data());
+  let tuesday = Object.entries((await getDoc(doc(db, "Location", "union", "Tuesday", "Events"))).data());
+  let wensday = Object.entries((await getDoc(doc(db, "Location", "union", "Wednesday", "Events"))).data());
+  let thursday = Object.entries((await getDoc(doc(db, "Location", "union", "Thursday", "Events"))).data());
+  let friday = Object.entries((await getDoc(doc(db, "Location", "union", "Friday", "Events"))).data());
+  return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
+}
+
+
+/*Read the comment in the Mapapi to understand this variable*/
+export const placeholder = [
   [
-      [
-          "loading",
-          {
-              "Contact_email": "loading",
-              "Contact_name": "loading",
-              "Event_Description": "loading",
-              "Event_Date": "loading",
-              "Event_Time": "loading",
-              "Contact_number": "loading",
-              "NumberofPeople": [0]
-          }
-      ],
-      
+    [
+      "loading",
+      {
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
+      }
+    ],
+
   ],
 
   [
     [
-        "loading",
-        {
-            "Contact_email": "loading",
-            "Contact_name": "loading",
-            "Event_Description": "loading",
-            "Event_Date": "loading",
-            "Event_Time": "loading",
-            "Contact_number": "loading",
-            "NumberofPeople": [0]
-        }
+      "loading",
+      {
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
+      }
     ],
-    
-],
-[
+
+  ],
   [
+    [
       "loading",
       {
-          "Contact_email": "loading",
-          "Contact_name": "loading",
-          "Event_Description": "loading",
-          "Event_Date": "loading",
-          "Event_Time": "loading",
-          "Contact_number": "loading",
-          "NumberofPeople": [0]
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
       }
+    ],
+
   ],
-  
-],
-
-
-[
   [
+    [
       "loading",
       {
-          "Contact_email": "loading",
-          "Contact_name": "loading",
-          "Event_Description": "loading",
-          "Event_Date": "loading",
-          "Event_Time": "loading",
-          "Contact_number": "loading",
-          "NumberofPeople": [0]
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
       }
+    ],
+
   ],
-  
-],
-
-
-[
   [
+    [
       "loading",
       {
-          "Contact_email": "loading",
-          "Contact_name": "loading",
-          "Event_Description": "loading",
-          "Event_Date": "loading",
-          "Event_Time": "loading",
-          "Contact_number": "loading",
-          "NumberofPeople": [0]
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
       }
+    ],
+
   ],
-  
-],
-      
+
 ];
 
-  const [unionEvents,changeUnionEvents] = useState(placeholder);
-  const [sacEvents,changeSacEvents] = useState(placeholder);
-  const [coneEvents,changeConeEvents] = useState(placeholder);
-  const [libEvents,changeLibEvents] = useState(placeholder);
-  useEffect(async ()=>{
-   changeUnionEvents(await getDataUnion());
-   changeSacEvents(await getDataSac());
-   changeConeEvents(await getDataCone());
-   changeLibEvents(await getDataLib());
-   
+
+
+const Mapapi = () => {
+  /* The place holder variable is there so that when function 
+  below tries to iterate through the object to get the data it does not error out
+  if it is not there the state will become undefined and will then error out. 
+  I made the placeholder variable to look like a mock up of what the database looks like
+  to by pass this*/
+
+  /* You cannot pass data into this object with props because the data will return back as a promise. 
+  The promise would then need to be maniuplated using UseEffect and would lead to more complex code*/
+  /* Would have to pretty much go back to use the promise syntax instead of using (async/await) */
+
+  const [unionEvents, changeUnionEvents] = useState(placeholder);
+  const [sacEvents, changeSacEvents] = useState(placeholder);
+  const [coneEvents, changeConeEvents] = useState(placeholder);
+  const [libEvents, changeLibEvents] = useState(placeholder);
+  useEffect(async () => {
+    changeUnionEvents(await getDataUnion());
+    changeSacEvents(await getDataSac());
+    changeConeEvents(await getDataCone());
+    changeLibEvents(await getDataLib());
   }
-    
-    ,[])
-    
-    return (
-      <div className="leaflet-container">
-        <MapContainer
-          center={[35.307880571109386, -80.73370127156109]}
-          zoom={16}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          {/* The first array is for the day ex -> [0] = monday [1] = tuesday*/}
-          {/* The second array is for each event during that day */}
-          {/* The third array is special. The first index of the third array is for the name, the second index is the actual object filled with the info. use [1].{stuff you want to get out of the object}*/}
-          {/* an example of this is gven write below. It is written in the console.log*/}
-          {console.log(unionEvents[1][0][1].Event_Description)}
 
-          {/*This is an example of how you would use it later on to create a list. Here you can see that it points to monday. and it's getting the Event time of each event*/}
-          {/* unionEvents[0].map((e,idx)=><li key={idx}>{e[1].Event_Time}</li>) ?? <p>No events</p> */}
+    , [])
 
-          
-          <Marker position={student_union}>
-            <Popup>
-              Student Union <br/>
-              <p> Monday </p>
-              {unionEvents[0].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Tuesday</p>
-              {unionEvents[1].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Wednesday</p>
-              {unionEvents[2].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Thursday</p>
-              {unionEvents[3].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Friday</p>
-              {unionEvents[4].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-            </Popup>
-          </Marker>
-          <Marker position={sac}>
-            <Popup>
-              Student Activity Center<br/>
-              <p> Monday </p>
-              {sacEvents[0].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Tuesday</p>
-              {sacEvents[1].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Wednesday</p>
-              {sacEvents[2].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Thursday</p>
-              {sacEvents[3].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Friday</p>
-              {sacEvents[4].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-            </Popup>
-          </Marker>
-          <Marker position={atkins_library}>
-            <Popup>
-              Atkins Library<br/>
-              <p> Monday </p>
-              {libEvents[0].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Tuesday</p>
-              {libEvents[1].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Wednesday</p>
-              {libEvents[2].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Thursday</p>
-              {libEvents[3].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Friday</p>
-              {libEvents[4].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-            </Popup>
-          </Marker>
-          <Marker position={cone}>
-            <Popup>
-              Cone University Center<br/>
-              <p> Monday </p>
-              {coneEvents[0].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Tuesday</p>
-              {coneEvents[1].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Wednesday</p>
-              {coneEvents[2].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Thursday</p>
-              {coneEvents[3].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
-              <p>Friday</p>
-              {coneEvents[4].map((e,idx)=><li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+  return (
+    <div className="leaflet-container">
+      <MapContainer
+        center={[35.307880571109386, -80.73370127156109]}
+        zoom={16}
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        {/* The first array is for the day ex -> [0] = monday [1] = tuesday*/}
+        {/* The second array is for each event during that day */}
+        {/* The third array is special. The first index of the third array is for the name, 
+        the second index is the actual object filled with the info. use [1].
+        {stuff you want to get out of the object}*/}
+        {/* an example of this is gven write below. 
+        It is written in the console.log*/}
+        {/*console.log(unionEvents[1][0][1].Event_Description)*/}
 
-            </Popup>
-          </Marker>
+        {/*This is an example of how you would use it later on to create a list. 
+        Here you can see that it points to monday. 
+        and it's getting the Event time of each event*/}
+        {/* unionEvents[0].map((e,idx)=><li key={idx}>{e[1].Event_Time}</li>) ?? <p>No events</p> */}
 
 
+        <Marker position={student_union}>
+          <Popup>
+            Student Union <br />
+            <p> Monday </p>
+            {unionEvents[0].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Tuesday</p>
+            {unionEvents[1].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Wednesday</p>
+            {unionEvents[2].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Thursday</p>
+            {unionEvents[3].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Friday</p>
+            {unionEvents[4].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+          </Popup>
+        </Marker>
+        <Marker position={sac}>
+          <Popup>
+            Student Activity Center<br />
+            <p> Monday </p>
+            {sacEvents[0].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Tuesday</p>
+            {sacEvents[1].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Wednesday</p>
+            {sacEvents[2].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Thursday</p>
+            {sacEvents[3].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Friday</p>
+            {sacEvents[4].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+          </Popup>
+        </Marker>
+        <Marker position={atkins_library}>
+          <Popup>
+            Atkins Library<br />
+            <p> Monday </p>
+            {libEvents[0].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Tuesday</p>
+            {libEvents[1].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Wednesday</p>
+            {libEvents[2].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Thursday</p>
+            {libEvents[3].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Friday</p>
+            {libEvents[4].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+          </Popup>
+        </Marker>
+        <Marker position={cone}>
+          <Popup>
+            Cone University Center<br />
+            <p> Monday </p>
+            {coneEvents[0].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Tuesday</p>
+            {coneEvents[1].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Wednesday</p>
+            {coneEvents[2].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Thursday</p>
+            {coneEvents[3].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+            <p>Friday</p>
+            {coneEvents[4].map((e, idx) => <li key={idx}>{e[0]}</li>) ?? <p>No events</p>}
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
+  );
+}
 
-        </MapContainer>
-      </div>
-    );
-  } 
-
-  
 
 
-    
-  
+
+
+
