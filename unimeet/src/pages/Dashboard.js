@@ -1,5 +1,5 @@
 import { NavBar2 } from '../components/Navigation'
-import { auth,db } from "../components/Firebase";
+import { auth, db } from "../components/Firebase";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -28,13 +28,13 @@ const cone = [35.30544458961595, -80.73322067039553];
 
 
 export const Dashboard = () => {
-  const [didMount, setDidMount] = useState(false); 
+  const [didMount, setDidMount] = useState(false);
   const navigate = useNavigate();
   const [userdata] = useAuthState(auth);
   useEffect(() => {
 
     setDidMount(true);
-    if(!didMount) {
+    if (!didMount) {
       return null;
     }
 
@@ -43,7 +43,7 @@ export const Dashboard = () => {
       navigate('/')
 
     }
-    
+
 
   }, [userdata])
 
@@ -63,60 +63,160 @@ export const Dashboard = () => {
 }
 
 
+/* Had to pass it through a an array due to the fact that if I did not I would not be able to iterate through all the data. 
+Passing onc piece of data is possible. However since it's a large more complex dataset it would not be possible without an array.
+There also would lead to more complex code due to the fact that we would have to deal with promises without the help of (async/await) 
+If anyone wants to try you are welcome to. 
+*/
+export async function getDataLib() {
+  let monday = Object.entries((await getDoc(doc(db, "Location", "lib", "Monday", "Events"))).data());
+  let tuesday = Object.entries((await getDoc(doc(db, "Location", "lib", "Tuesday", "Events"))).data());
+  let wensday = Object.entries((await getDoc(doc(db, "Location", "lib", "Wednesday", "Events"))).data());
+  let thursday = Object.entries((await getDoc(doc(db, "Location", "lib", "Thursday", "Events"))).data());
+  let friday = Object.entries((await getDoc(doc(db, "Location", "lib", "Friday", "Events"))).data());
+  return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
+}
+
+export async function getDataCone() {
+  let monday = Object.entries((await getDoc(doc(db, "Location", "cone", "Monday", "Events"))).data());
+  let tuesday = Object.entries((await getDoc(doc(db, "Location", "cone", "Tuesday", "Events"))).data());
+  let wensday = Object.entries((await getDoc(doc(db, "Location", "cone", "Wednesday", "Events"))).data());
+  let thursday = Object.entries((await getDoc(doc(db, "Location", "cone", "Thursday", "Events"))).data());
+  let friday = Object.entries((await getDoc(doc(db, "Location", "cone", "Friday", "Events"))).data());
+  return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
+
+}
+
+
+
+export async function getDataSac() {
+  let monday = Object.entries((await getDoc(doc(db, "Location", "sac", "Monday", "Events"))).data());
+  let tuesday = Object.entries((await getDoc(doc(db, "Location", "sac", "Tuesday", "Events"))).data());
+  let wensday = Object.entries((await getDoc(doc(db, "Location", "sac", "Wednesday", "Events"))).data());
+  let thursday = Object.entries((await getDoc(doc(db, "Location", "sac", "Thursday", "Events"))).data());
+  let friday = Object.entries((await getDoc(doc(db, "Location", "sac", "Friday", "Events"))).data());
+  return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
+}
+
+
+export async function getDataUnion() {
+  let monday = Object.entries((await getDoc(doc(db, "Location", "union", "Monday", "Events"))).data());
+  let tuesday = Object.entries((await getDoc(doc(db, "Location", "union", "Tuesday", "Events"))).data());
+  let wensday = Object.entries((await getDoc(doc(db, "Location", "union", "Wednesday", "Events"))).data());
+  let thursday = Object.entries((await getDoc(doc(db, "Location", "union", "Thursday", "Events"))).data());
+  let friday = Object.entries((await getDoc(doc(db, "Location", "union", "Friday", "Events"))).data());
+  return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
+}
+
+
+/*Read the comment in the Mapapi to understand this variable*/
+export const placeholder = [
+  [
+    [
+      "loading",
+      {
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
+      }
+    ],
+
+  ],
+
+  [
+    [
+      "loading",
+      {
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
+      }
+    ],
+
+  ],
+  [
+    [
+      "loading",
+      {
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
+      }
+    ],
+
+  ],
+  [
+    [
+      "loading",
+      {
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
+      }
+    ],
+
+  ],
+  [
+    [
+      "loading",
+      {
+        "Contact_email": "loading",
+        "Contact_name": "loading",
+        "Event_Description": "loading",
+        "Event_Date": "loading",
+        "Event_Time": "loading",
+        "Contact_number": "loading",
+        "NumberofPeople": [0]
+      }
+    ],
+
+  ],
+
+];
+
 
 
 const Mapapi = () => {
-  const placeholder = [[""],[""],[""],[""],[""]];
-  const [unionEvents,changeUnionEvents] = useState(placeholder);
-  const [sacEvents,changeSacEvents] = useState(placeholder);
-  const [libEvents,changeLibEvents] = useState(placeholder);
-  const [coneEvents,changeConeEvents] = useState(placeholder);
-  
-  useEffect(async ()=>{
-   changeConeEvents(await getDataCone());
-   changeUnionEvents(await getDataUnion());
-   changeSacEvents(await getDataSac());
-   changeLibEvents(await getDataLib());
+  /* The place holder variable is there so that when function 
+  below tries to iterate through the object to get the data it does not error out
+  if it is not there the state will become undefined and will then error out. 
+  I made the placeholder variable to look like a mock up of what the database looks like
+  to by pass this*/
+
+  /* You cannot pass data into this object with props because the data will return back as a promise. 
+  The promise would then need to be maniuplated using UseEffect and would lead to more complex code*/
+  /* Would have to pretty much go back to use the promise syntax instead of using (async/await) */
+
+  const [unionEvents, changeUnionEvents] = useState(placeholder);
+  const [sacEvents, changeSacEvents] = useState(placeholder);
+  const [coneEvents, changeConeEvents] = useState(placeholder);
+  const [libEvents, changeLibEvents] = useState(placeholder);
+  useEffect(async () => {
+    changeUnionEvents(await getDataUnion());
+    changeSacEvents(await getDataSac());
+    changeConeEvents(await getDataCone());
+    changeLibEvents(await getDataLib());
   }
     
     
     ,[])
-    async function getDataLib(){
-      let monday = Object.keys((await getDoc(doc(db,"Location","lib","Monday","Events"))).data());
-      let tuesday = Object.keys((await getDoc(doc(db,"Location","lib","Tuesday","Events"))).data());
-      let wensday = Object.keys((await getDoc(doc(db,"Location","lib","Wednesday","Events"))).data());
-      let thursday = Object.keys((await getDoc(doc(db,"Location","lib","Thursday","Events"))).data());
-      let friday = Object.keys((await getDoc(doc(db,"Location","lib","Friday","Events"))).data());
-      return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];      
-       }
     
-  async function getDataCone(){
-    let monday = Object.keys((await getDoc(doc(db,"Location","cone","Monday","Events"))).data());
-    let tuesday = Object.keys((await getDoc(doc(db,"Location","cone","Tuesday","Events"))).data());
-    let wensday = Object.keys((await getDoc(doc(db,"Location","cone","Wednesday","Events"))).data());
-    let thursday = Object.keys((await getDoc(doc(db,"Location","cone","Thursday","Events"))).data());
-    let friday = Object.keys((await getDoc(doc(db,"Location","cone","Friday","Events"))).data());
-    return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];
-    
-     }
-
-    async function getDataUnion(){
-      let monday = Object.keys((await getDoc(doc(db,"Location","union","Monday","Events"))).data());
-      let tuesday = Object.keys((await getDoc(doc(db,"Location","union","Tuesday","Events"))).data());
-      let wensday = Object.keys((await getDoc(doc(db,"Location","union","Wednesday","Events"))).data());
-      let thursday = Object.keys((await getDoc(doc(db,"Location","union","Thursday","Events"))).data());
-      let friday = Object.keys((await getDoc(doc(db,"Location","union","Friday","Events"))).data());
-      return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];      
-       }
-
-       async function getDataSac(){
-        let monday = Object.keys((await getDoc(doc(db,"Location","sac","Monday","Events"))).data());
-        let tuesday = Object.keys((await getDoc(doc(db,"Location","sac","Tuesday","Events"))).data());
-        let wensday = Object.keys((await getDoc(doc(db,"Location","sac","Wednesday","Events"))).data());
-        let thursday = Object.keys((await getDoc(doc(db,"Location","sac","Thursday","Events"))).data());
-        let friday = Object.keys((await getDoc(doc(db,"Location","sac","Friday","Events"))).data());
-        return [[...monday],[...tuesday],[...wensday],[...thursday],[...friday]];        
-         }
 
     return (
       <div className="leaflet-container">
@@ -188,10 +288,6 @@ const Mapapi = () => {
               {coneEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
               <p>Friday</p>
               {coneEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-
-
-
-
             </Popup>
           </Marker>
         </MapContainer>
@@ -204,3 +300,11 @@ const Mapapi = () => {
 
     
   
+
+    
+
+
+
+
+
+

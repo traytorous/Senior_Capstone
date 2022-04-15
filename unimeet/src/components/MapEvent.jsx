@@ -66,8 +66,8 @@ const MapEvent = (props) => {
                 <div className="popup-icon"></div>
             </div>
             <div className="popup-box2">
-                <div className="popup-name">{event}</div>
-                <div className="popup-time">{event.Event_Date} @ {event.Event_Time}</div>
+                <div className="popup-name">{event[0]}</div>
+                <div className="popup-time">{event[1].Event_Date} @ {event[1].Event_Time}</div>
             </div>
         </div>
         </>
