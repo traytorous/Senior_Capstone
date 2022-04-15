@@ -28,8 +28,7 @@ export const NavBar1 = () => {
             className="UNCC-Logo" 
             src={UNCCLogo}
           />
-          <div className="login-button"><CstmButton text="Log In" variant="white" onClick={signInGoogle}/></div>
-          <div className="signup-button"><CstmButton text="Sign Up" variant="gold"/></div>
+          <div className="login-button"><CstmButton text="Log In" variant="gold" onClick={signInGoogle}/></div>
         </div>
       </header>
     </header>
