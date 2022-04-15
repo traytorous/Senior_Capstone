@@ -39,7 +39,7 @@ export const CreateEventPage = () => {
 }
 
 const EventSignUp = () => {
-  const [Eventname, changeEventname] = useState("No event namge");
+  const [Eventname, changeEventname] = useState("No event name");
   const [Eventdescription, changeEventdescription] = useState("No Description");
 
   const [Location, changeLocation] = useState("union");
