@@ -28,8 +28,7 @@ export const NavBar1 = () => {
             className="UNCC-Logo" 
             src={UNCCLogo}
           />
-          <div className="login-button"><CstmButton text="Log In" variant="white" onClick={signInGoogle}/></div>
-          <div className="signup-button"><CstmButton text="Sign Up" variant="gold"/></div>
+          <div className="login-button"><CstmButton text="Log In" variant="gold" onClick={signInGoogle}/></div>
         </div>
       </header>
     </header>
@@ -73,43 +72,3 @@ export const NavBar2 = () => {
        
   )
 }
-
-
-
-export const NavBar3 = () => {
-  const navigate = useNavigate();
-  
- const navigateCreateEventPate = () => navigate("/CreateEventPage");
-  const navigateDashBoard = () =>  navigate('/Dashboard');
-  return (
- 
-      <header className="topbar">
-              <header className="header">
-             
-        <div className="links">
-          <img 
-            className="Unimeet-Logo" 
-            src={UnimeetLogo}
-            height=""
-            width="75"
-            onClick={navigateDashBoard}
-          />
-          <img 
-          className="UNCC-Logo" 
-          src={UNCCLogo}
-        />
-
-        <div className= "userimage"><Userphoto/></div>   
-        <div className="signout-button"><CstmButton text="Sign Out" variant="white" onClick={signOutGoogle}/></div>
-        <div className="home-button"><CstmButton text="Home" variant="gold" onClick={navigateDashBoard}/></div>
-
-       
-        </div>
-       </header>
-       </header>
-       
-
-
-  )
-}
-
