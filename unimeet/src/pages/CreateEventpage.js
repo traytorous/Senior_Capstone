@@ -59,7 +59,8 @@ const EventSignUp = () => {
       "Contact_name":Contactname,
       "Contact_email":Contactemail,
       "Contact_number":ContactPhonenumber,
-      "NumberofPeople":[]
+      "NumberofPeople":[],
+      "Event_name": Eventname
        }
     });
   

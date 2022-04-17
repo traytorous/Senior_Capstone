@@ -72,7 +72,7 @@ const MyEvent = (props) => {
                 <div className="myevent-icon">icon</div>
             </div>
             <div className="myevent-box2">
-                <div className="myevent-name">{event}</div>
+                <div className="myevent-name">{event.Event_name}</div>
                 <div className="myevent-time">{event.Event_Date} @ {event.Event_Time}</div>
             </div>
         </div>
