@@ -4,8 +4,9 @@ This is how to use it.
 where e is an event*/
 
 /* TODO: remove testing borders*/
+import { SignUp } from "../pages/Dashboard";
 const MapEvent = (props) => {
-    const { event } = props
+    const { event, location, day } = props
     return (
         <>
         <style type="text/css">
@@ -68,6 +69,7 @@ const MapEvent = (props) => {
             <div className="popup-box2">
                 <div className="popup-name">{event[0]}</div>
                 <div className="popup-time">{event[1].Event_Date} @ {event[1].Event_Time}</div>
+                <button onClick={()=> {SignUp(location,day,event[0])}}>Sign up</button>
             </div>
         </div>
         </>

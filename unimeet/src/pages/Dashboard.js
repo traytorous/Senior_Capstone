@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import CstmButton from '../components/CstmButton';
-import { getDoc,doc } from "firebase/firestore"; 
+import { getDoc, doc, updateDoc, arrayUnion } from "firebase/firestore";
 import MapEvent from '../components/MapEvent';
 
 /* The lines below are for the map. I would not recommend touching :) */
@@ -53,9 +53,9 @@ export const Dashboard = () => {
     <div className="textBackground">
       <NavBar2 />
       <h1> Welcome {localStorage.getItem("username")}</h1>
-      <div className="signUpEvent"><CstmButton text="Event Sign Up" variant="gold" onClick={navigateSignupPage}/></div>
-     
-      <Mapapi/>
+      <div className="signUpEvent"><CstmButton text="Event Sign Up" variant="gold" onClick={navigateSignupPage} /></div>
+
+      <Mapapi />
     </div>
 
   );
@@ -106,6 +106,24 @@ export async function getDataUnion() {
   let thursday = Object.entries((await getDoc(doc(db, "Location", "union", "Thursday", "Events"))).data());
   let friday = Object.entries((await getDoc(doc(db, "Location", "union", "Friday", "Events"))).data());
   return [[...monday], [...tuesday], [...wensday], [...thursday], [...friday]];
+}
+/*
+A function that communicates with the database. This is used in the MapEvent.jsx file.
+It creates a ref/link to the database.
+It then uses the arrayUnion to first check the database to see if there is a replica in the array
+it then adds it. If there is a replica it does not add the item to the database
+*/
+export async function SignUp(location, day, event) {
+  const ref = doc(db, "Location", location, day, "Events")
+  /* This most likely can be taken out. I just made it 
+  because I wanted it to be sure it's a string. Better safe than sorry. Most likely it is redundant :) */
+  event = String(event);
+  /*Used dot notation to get to the data in the database. Could not find another option*/
+  event = event.concat(".NumberofPeople");
+  await updateDoc(ref, {
+    [event]: arrayUnion(localStorage.getItem("username"))
+  }
+  )
 }
 
 
@@ -213,95 +231,93 @@ const Mapapi = () => {
     changeConeEvents(await getDataCone());
     changeLibEvents(await getDataLib());
   }
-    
-    
-    ,[])
-    
-
-    return (
-      <div className="leaflet-container">
-        <MapContainer
-          center={[35.307880571109386, -80.73370127156109]}
-          zoom={16}
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={student_union}>
-            <Popup>
-              Student Union <br/>
-              <p> Monday </p>
-              {unionEvents[0].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Tuesday</p>
-              {unionEvents[1].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Wednesday</p>
-              {unionEvents[2].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Thursday</p>
-              {unionEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Friday</p>
-              {unionEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-            </Popup>
-          </Marker>
-          <Marker position={sac}>
-            <Popup>
-              Student Activity Center<br/>
-              <p> Monday </p>
-              {sacEvents[0].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Tuesday</p>
-              {sacEvents[1].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Wednesday</p>
-              {sacEvents[2].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Thursday</p>
-              {sacEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Friday</p>
-              {sacEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-            </Popup>
-          </Marker>
-          <Marker position={atkins_library}>
-            <Popup>
-              Atkins Library<br/>
-              <p> Monday </p>
-              {libEvents[0].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Tuesday</p>
-              {libEvents[1].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Wednesday</p>
-              {libEvents[2].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Thursday</p>
-              {libEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Friday</p>
-              {libEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-            </Popup>
-          </Marker>
-          <Marker position={cone}>
-            <Popup>
-              Cone University Center<br/>
-              <p> Monday </p>
-              {console.log(coneEvents[0])}
-              {coneEvents[0].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Tuesday</p>
-              {coneEvents[1].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Wednesday</p>
-              {coneEvents[2].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Thursday</p>
-              {coneEvents[3].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-              <p>Friday</p>
-              {coneEvents[4].map((e)=><MapEvent event={e}/>) ?? <p>No events</p>}
-            </Popup>
-          </Marker>
-        </MapContainer>
-      </div>
-    );
-  } 
-
-  
 
 
-    
-  
+    , [])
 
-    
+  return (
+    <div className="leaflet-container">
+      <MapContainer
+        center={[35.307880571109386, -80.73370127156109]}
+        zoom={16}
+        scrollWheelZoom={false}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={student_union}>
+          <Popup>
+            Student Union <br />
+            <p> Monday </p>
+            {unionEvents[0].map((e) => <MapEvent event={e} location="union" day="Monday" />)}
+            <p>Tuesday</p>
+            {unionEvents[1].map((e) => <MapEvent event={e} location="union" day="Tuesday" />)}
+            <p>Wednesday</p>
+            {unionEvents[2].map((e) => <MapEvent event={e} location="union" day="Wednesday" />)}
+            <p>Thursday</p>
+            {unionEvents[3].map((e) => <MapEvent event={e} location="union" day="Thursday" />)}
+            <p>Friday</p>
+            {unionEvents[4].map((e) => <MapEvent event={e} location="union" day="Friday" />)}
+          </Popup>
+        </Marker>
+        <Marker position={sac}>
+          <Popup>
+            Student Activity Center<br />
+            <p> Monday </p>
+            {sacEvents[0].map((e) => <MapEvent event={e} location="sac" day="Monday" />)}
+            <p>Tuesday</p>
+            {sacEvents[1].map((e) => <MapEvent event={e} location="sac" day="Tuesday" />)}
+            <p>Wednesday</p>
+            {sacEvents[2].map((e) => <MapEvent event={e} location="sac" day="Wednesday" />)}
+            <p>Thursday</p>
+            {sacEvents[3].map((e) => <MapEvent event={e} location="sac" day="Thursday" />)}
+            <p>Friday</p>
+            {sacEvents[4].map((e) => <MapEvent event={e} location="sac" day="Friday" />)}
+          </Popup>
+        </Marker>
+        <Marker position={atkins_library}>
+          <Popup>
+            Atkins Library<br />
+            <p> Monday </p>
+            {libEvents[0].map((e) => <MapEvent event={e} location="lib" day="Monday" />)}
+            <p>Tuesday</p>
+            {libEvents[1].map((e) => <MapEvent event={e} location="lib" day="Tuesday" />)}
+            <p>Wednesday</p>
+            {libEvents[2].map((e) => <MapEvent event={e} location="lib" day="Wednesday" />)}
+            <p>Thursday</p>
+            {libEvents[3].map((e) => <MapEvent event={e} location="lib" day="Thursday" />)}
+            <p>Friday</p>
+            {libEvents[4].map((e) => <MapEvent event={e} location="lib" day="Friday" />)}
+          </Popup>
+        </Marker>
+        <Marker position={cone}>
+          <Popup>
+            Cone University Center<br />
+            <p> Monday </p>
+            {coneEvents[0].map((e) => <MapEvent event={e} location="cone" day="Monday" />)}
+            <p>Tuesday</p>
+            {coneEvents[1].map((e) => <MapEvent event={e} location="cone" day="Tuesday" />)}
+            <p>Wednesday</p>
+            {coneEvents[2].map((e) => <MapEvent event={e} location="cone" day="Wednesday" />)}
+            <p>Thursday</p>
+            {coneEvents[3].map((e) => <MapEvent event={e} location="cone" day="Thursday" />)}
+            <p>Friday</p>
+            {coneEvents[4].map((e) => <MapEvent event={e} location="cone" day="Friday" />)}
+          </Popup>
+        </Marker>
+      </MapContainer>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
 
 
 
