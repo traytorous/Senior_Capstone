@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import CstmButton from '../components/CstmButton';
-import { getDoc, doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { getDoc, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import MapEvent from '../components/MapEvent';
 
 /* The lines below are for the map. I would not recommend touching :) */
@@ -121,7 +121,20 @@ export async function SignUp(location, day, event) {
   /*Used dot notation to get to the data in the database. Could not find another option*/
   event = event.concat(".NumberofPeople");
   await updateDoc(ref, {
-    [event]: arrayUnion(localStorage.getItem("username"))
+    [event]: arrayUnion(localStorage.getItem("email"))
+  }
+  )
+}
+
+export async function signDown(location, day, event) {
+  const ref = doc(db, "Location", location, day, "Events")
+  /* This most likely can be taken out. I just made it 
+  because I wanted it to be sure it's a string. Better safe than sorry. Most likely it is redundant :) */
+  event = String(event);
+  /*Used dot notation to get to the data in the database. Could not find another option*/
+  event = event.concat(".NumberofPeople");
+  await updateDoc(ref, {
+    [event]: arrayRemove(localStorage.getItem("email"))
   }
   )
 }

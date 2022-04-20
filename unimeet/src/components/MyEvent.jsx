@@ -2,11 +2,12 @@
 This is how to use it.
 <MyEvent event={e} /> 
 where e is an event*/
-
+import { signDown } from "../pages/Dashboard";
 /* TODO: change px to em, remove testing borders and correct how data is receieved and spat out*/
 const MyEvent = (props) => {
-    const { event } = props
-    return (
+    const { event, day, location } = props
+    
+            return (
         <>
         <style type="text/css">
             {`
@@ -64,16 +65,39 @@ const MyEvent = (props) => {
                 text-align: center;
                 transform: translate(-50%,-50%);
             }
+
+            .myevent-people {
+                margin: 0;
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                width: 100%;
+                font-size: 13px;
+                text-align: center;
+                transform: translate(-50%,-50%);
+            }
+            .myevent-delete {
+                margin: 0;
+                position: absolute;
+                top: 10%;
+                left: 95%;
+                width: 10%;
+                font-size: 13px;
+                text-align: center;
+                transform: translate(-50%,-50%);
+            }
             `}
         </style>
 
         <div className="myevent-event">
             <div className="myevent-box1">
                 <div className="myevent-icon">icon</div>
+                <button className="myevent-delete" onClick={ ()=>{signDown(location,day,event[0])}}>X</button>
             </div>
             <div className="myevent-box2">
                 <div className="myevent-name">{event.Event_name}</div>
-                <div className="myevent-time">{event.Event_Date} @ {event.Event_Time}</div>
+                {/*<div className="myevent-time">{event.Event_Date} @ {event.Event_Time}</div>*/}
+                <div className="myevent-people">{(event.NumberofPeople.length)} at event</div>
             </div>
         </div>
         </>

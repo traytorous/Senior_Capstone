@@ -26,7 +26,7 @@ export const signInGoogle = async () => {
     localStorage.setItem("userimage",res.user.photoURL);
     localStorage.setItem("username",res.user.displayName);
     localStorage.setItem("email",res.user.email);
-
+    localStorage.setItem("id", res.id.console);
 
   } catch (errr) {
     console.error(errr);
@@ -46,6 +46,7 @@ export const signOutGoogle = () => {
   localStorage.removeItem("userimage");
   localStorage.removeItem("username");
   localStorage.removeItem("email");
+  localStorage.removeItem("id");
   signOut(auth);
 }
 

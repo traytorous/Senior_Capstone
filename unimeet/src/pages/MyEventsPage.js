@@ -29,10 +29,11 @@ const placeholder = [
       ],
       "loading": "loading",
       "loading": "loading",
-      "loading": "loading"
+      "NumberofPeople": [0]
     },
-  
+
 ]
+
 export async function myEventsUnion() {
   // get all the events from the union
   let test = await getDataUnion();
