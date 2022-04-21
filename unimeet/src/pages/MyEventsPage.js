@@ -41,7 +41,7 @@ export async function myEventsUnion() {
   // Could not do a double map to return a cleaner array. Had to resort to filtering it out manually
   test = test.map(
     (e) => {
-      if (e[0][1].NumberofPeople.includes(localStorage.getItem("username"))) {
+      if (e[0][1].NumberofPeople.includes(localStorage.getItem("email"))) {
         return e[0][1];
       } else {
         return 1;
@@ -57,7 +57,7 @@ export async function myEventsSac() {
   let test = await getDataSac();
   test = test.map(
     (e) => {
-      if (e[0][1].NumberofPeople.includes(localStorage.getItem("username"))) {
+      if (e[0][1].NumberofPeople.includes(localStorage.getItem("email"))) {
         return e[0][1];
       } else {
         return 1;
@@ -72,7 +72,7 @@ export async function myEventsLib() {
   let test = await getDataLib();
   test = test.map(
     (e) => {
-      if (e[0][1].NumberofPeople.includes(localStorage.getItem("username"))) {
+      if (e[0][1].NumberofPeople.includes(localStorage.getItem("email"))) {
         return e[0][1];
       } else {
         return 1;
@@ -86,7 +86,7 @@ export async function myEventsCone() {
   let test = await getDataCone();
   test = test.map(
     (e) => {
-      if (e[0][1].NumberofPeople.includes(localStorage.getItem("username"))) {
+      if (e[0][1].NumberofPeople.includes(localStorage.getItem("email"))) {
         return e[0][1];
       } else {
         return 1;
@@ -136,22 +136,22 @@ export const MyEventsPage = () => {
       <h1> Welcome {localStorage.getItem("username")} to the My Events page</h1>
       <h3>Union Events</h3>
       {unionEvents.map((e)=>{
-        return <MyEvent event={e}/>
+        return <MyEvent event={e} location="union"/>
       }
       )}
       <h3>Cone Events</h3>
       {coneEvents.map((e)=>{
-        return <MyEvent event={e}/>
+        return <MyEvent event={e} location="cone"/>
       }
       )}
       <h3>Student Activity Center Events</h3>
       {sacEvents.map((e)=>{
-        return <MyEvent event={e}/>
+        return <MyEvent event={e} location="sac"/>
       }
       )}
       <h3>Atkins Library Events</h3>
       {libEvents.map((e)=>{
-        return <MyEvent event={e}/>
+        return <MyEvent event={e} location="lib"/>
       }
       )}
     </div>

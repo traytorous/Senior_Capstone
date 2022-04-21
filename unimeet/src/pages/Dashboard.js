@@ -53,8 +53,6 @@ export const Dashboard = () => {
     <div className="textBackground">
       <NavBar2 />
       <h1> Welcome {localStorage.getItem("username")}</h1>
-      <div className="signUpEvent"><CstmButton text="Event Sign Up" variant="gold" onClick={navigateSignupPage} /></div>
-
       <Mapapi />
     </div>
 

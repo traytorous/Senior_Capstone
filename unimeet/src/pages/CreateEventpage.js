@@ -60,7 +60,8 @@ const EventSignUp = () => {
       "Contact_email":Contactemail,
       "Contact_number":ContactPhonenumber,
       "NumberofPeople":[],
-      "Event_name": Eventname
+      "Event_name": Eventname,
+      "Day":dayoftheweek
        }
     });
   

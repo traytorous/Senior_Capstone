@@ -1,9 +1,14 @@
+/*
+
+This is page is not to be used in the final design of the application. Please leave it alone and focus on other pages.
+Tray
+
+*/
 import { NavBar2 } from "../components/Navigation";
 import { auth } from "../components/Firebase";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-/* These are all the functions and the variables used to get the data for the events*/
 import { placeholder, getDataLib, getDataCone, getDataSac, getDataUnion } from "./Dashboard"
 
 export const SignupPage = () => {

@@ -5,12 +5,12 @@ where e is an event*/
 import { signDown } from "../pages/Dashboard";
 /* TODO: change px to em, remove testing borders and correct how data is receieved and spat out*/
 const MyEvent = (props) => {
-    const { event, day, location } = props
-    
-            return (
+    const { event,location } = props
+
+    return (
         <>
-        <style type="text/css">
-            {`
+            <style type="text/css">
+                {`
             .myevent-event {
                 position: relative;
                 border: 4px solid gold; 
@@ -87,22 +87,22 @@ const MyEvent = (props) => {
                 transform: translate(-50%,-50%);
             }
             `}
-        </style>
+            </style>
 
-        <div className="myevent-event">
-            <div className="myevent-box1">
-                <div className="myevent-icon">icon</div>
-                <button className="myevent-delete" onClick={ ()=>{signDown(location,day,event[0])}}>X</button>
+            <div className="myevent-event">
+                <div className="myevent-box1">
+                    <div className="myevent-icon">icon</div>
+                    <button className="myevent-delete" onClick={() => { signDown(location, event.Day, event.Event_name) }}>X</button>
+                </div>
+                <div className="myevent-box2">
+                    <div className="myevent-name">{event.Event_name}</div>
+                    {/*<div className="myevent-time">{event.Event_Date} @ {event.Event_Time}</div>*/}
+                    <div className="myevent-people">{(event.NumberofPeople.length)} at event</div>
+                </div>
             </div>
-            <div className="myevent-box2">
-                <div className="myevent-name">{event.Event_name}</div>
-                {/*<div className="myevent-time">{event.Event_Date} @ {event.Event_Time}</div>*/}
-                <div className="myevent-people">{(event.NumberofPeople.length)} at event</div>
-            </div>
-        </div>
         </>
     );
 };
-        
+
 
 export default MyEvent;
