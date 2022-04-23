@@ -5,18 +5,18 @@ import React, { useEffect, useState } from "react";
 import { Form, Button } from 'react-bootstrap';
 import { NavBar2 } from "../components/Navigation";
 import { useNavigate } from "react-router-dom";
-import { auth,db } from "../components/Firebase";
-import { doc,updateDoc} from "firebase/firestore"; 
+import { auth, db } from "../components/Firebase";
+import { doc, updateDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 export const CreateEventPage = () => {
-  const [didMount, setDidMount] = useState(false); 
+  const [didMount, setDidMount] = useState(false);
   const navigate = useNavigate();
   const [userdata] = useAuthState(auth);
   useEffect(() => {
 
     setDidMount(true);
-    if(!didMount) {
+    if (!didMount) {
       return null;
     }
 
@@ -25,15 +25,15 @@ export const CreateEventPage = () => {
       navigate('/')
 
     }
-    
+
 
   }, [userdata])
   return (
     <div className="textBackground">
-        <NavBar2/>
-        <h1> Create Events</h1>
-        <EventSignUp/>
-        </div>
+      <NavBar2 />
+      <h1> Create Events</h1>
+      <EventSignUp />
+    </div>
   )
 
 }
@@ -49,27 +49,28 @@ const EventSignUp = () => {
   const [ContactPhonenumber, changeContactPhonenumber] = useState("No event Phone number");
   const [DayOfTheWeek, changeDayOfTheWeek] = useState("Monday");
   const Contactemail = localStorage.getItem("email");
-  
-  async function SendEvent (dayoftheweek,location,Eventname,Eventdescription,EventDate,EventTime,Contactname,Contactemail,ContactPhonenumber) {
-    await updateDoc(doc(db, "Location", location,dayoftheweek,"Events"),{
-       [Eventname] : {
-      "Event_Description":Eventdescription,
-      "Event_Date":EventDate,
-      "Event_Time":EventTime,
-      "Contact_name":Contactname,
-      "Contact_email":Contactemail,
-      "Contact_number":ContactPhonenumber,
-      "NumberofPeople":[],
-      "Event_name": Eventname,
-      "Day":dayoftheweek
-       }
+
+  async function SendEvent(dayoftheweek, location, Eventname, Eventdescription, EventDate, EventTime, Contactname, Contactemail, ContactPhonenumber) {
+    await updateDoc(doc(db, "Location", location, dayoftheweek, "Events"), {
+      [Eventname]: {
+        "Event_Description": Eventdescription,
+        "Event_Date": EventDate,
+        "Event_Time": EventTime,
+        "Contact_name": Contactname,
+        "Contact_email": Contactemail,
+        "Contact_number": ContactPhonenumber,
+        "NumberofPeople": [],
+        "Event_name": Eventname,
+        "Day": dayoftheweek,
+        "location": location
+      }
     });
-  
+
   }
 
-  async function send_Wrapper(){
-    SendEvent(DayOfTheWeek,Location,Eventname,Eventdescription,EventDate,
-      EventTime,Contactname,Contactemail,ContactPhonenumber);
+  async function send_Wrapper() {
+    SendEvent(DayOfTheWeek, Location, Eventname, Eventdescription, EventDate,
+      EventTime, Contactname, Contactemail, ContactPhonenumber);
   }
   return (
     <div>
@@ -78,10 +79,10 @@ const EventSignUp = () => {
           <Form.Label>Event Name</Form.Label>
           <Form.Control className="w-50" onChange={(e) => { changeEventname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
-      <Form.Group className="mb-3" controlId="EventDetailID">
-         <Form.Label>Description</Form.Label>
-         <Form.Control className="w-50" onChange={(e) => {changeEventdescription(e.target.value); } } as="textarea" rows={3}/>
-  </Form.Group>
+        <Form.Group className="mb-3" controlId="EventDetailID">
+          <Form.Label>Description</Form.Label>
+          <Form.Control className="w-50" onChange={(e) => { changeEventdescription(e.target.value); }} as="textarea" rows={3} />
+        </Form.Group>
 
         {['radio'].map((type) => (
           <div key={`inline-${type}`} className="mb-3">
@@ -128,7 +129,7 @@ const EventSignUp = () => {
 
 
 
-  <Form.Group className="mb-3" controlId="EventDateID" >
+        <Form.Group className="mb-3" controlId="EventDateID" >
           <Form.Label> Event Date </Form.Label>
           <Form.Control className="w-50" onChange={(e) => { changeEventDate(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
@@ -141,15 +142,15 @@ const EventSignUp = () => {
           <Form.Label> Contact Name </Form.Label>
           <Form.Control className="w-50" onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
         </Form.Group>
-        
+
         <Form.Group className="mb-3" controlId="EventPhoneNumberID" >
           <Form.Label> Contact Phone Number  </Form.Label>
           <Form.Control className="w-50" onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
-        </Form.Group>   
-            <Button variant="dark" onClick={send_Wrapper}type="submit">Create Event</Button>
+        </Form.Group>
+        <Button variant="dark" onClick={send_Wrapper} type="submit">Create Event</Button>
 
 
-{['radio'].map((type) => (
+        {['radio'].map((type) => (
           <div key={`inline-${type}`} className="mb-3">
             <Form.Check
               inline
@@ -210,4 +211,3 @@ const EventSignUp = () => {
 
 }
 
- 

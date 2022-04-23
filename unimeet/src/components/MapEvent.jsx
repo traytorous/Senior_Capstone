@@ -1,25 +1,32 @@
-/* Component for putting formatted events in a pin menu on the Dashboard.
-This is how to use it.
-<MapEvent event={e} /> 
-where e is an event*/
+/*  
+This component is for displaying event information in the leaflet popup. It also acts as a button to open the SideMenu. 
+Example: <NewMapEvent event={e} onClick={() => {setMenuStatus(true);eventChanger(e);}}/>
+event passes the intended event.
+onClick will take two functions with a value to pass back to MapAndMenu. 
 
-/* TODO: remove testing borders*/
-import { SignUp } from "../pages/Dashboard";
-const MapEvent = (props) => {
-    const { event, location, day } = props
+TODO: Fix spacing issue when more than one event displays on a single day.
+*/
+
+function MapEvent({ onClick, event }) {
     return (
         <>
         <style type="text/css">
             {`
             .popup-event {
-                position: relative;
-                border: 1px solid grey; 
-                height: 7em;
-                width: 18em;
+              position: relative;
+              border: 1px solid grey; 
+              height: 7em;
+              width: 18em;
+              margin-bottom: 5px;
+              margin-right: 0px;
+              display: inline-block;
+              padding: 0px; 
             }
               
             .popup-box1 {
                 position: absolute;
+                left: 0%;
+                top: 0%;
                 height: 100%;
                 width: 40%;
             }
@@ -27,6 +34,7 @@ const MapEvent = (props) => {
             .popup-box2 {
                 position: absolute;
                 height: 100%;
+                top: 0%;
                 right: 0%;
                 width: 60%;
             }
@@ -61,20 +69,18 @@ const MapEvent = (props) => {
             }
             `}
         </style>
-
-        <div className="popup-event">
+  
+        <button className="popup-event" onClick={onClick}>
             <div className="popup-box1">
                 <div className="popup-icon"></div>
             </div>
             <div className="popup-box2">
                 <div className="popup-name">{event[0]}</div>
                 <div className="popup-time">{event[1].Event_Date} @ {event[1].Event_Time}</div>
-                <button onClick={()=> {SignUp(location,day,event[0])}}>Sign up</button>
             </div>
-        </div>
+        </button>
         </>
     );
-};
-        
+  };
 
-export default MapEvent;
+  export default MapEvent;

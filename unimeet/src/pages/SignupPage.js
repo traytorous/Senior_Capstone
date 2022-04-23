@@ -9,7 +9,8 @@ import { auth } from "../components/Firebase";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { placeholder, getDataLib, getDataCone, getDataSac, getDataUnion } from "./Dashboard"
+/* These are all the functions and the variables used to get the data for the events*/
+import { placeholder, getDataLib, getDataCone, getDataSac, getDataUnion } from "../components/Map"
 
 export const SignupPage = () => {
   const [didMount, setDidMount] = useState(false);
