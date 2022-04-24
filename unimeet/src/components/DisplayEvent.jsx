@@ -105,9 +105,6 @@ const DisplayEvent = ( props ) => {
       <div className="titlebox">
       <button onClick={()=> {SignUp(event[1].location,event[1].Day,event[1].Event_name)}}>Sign up</button>
       </div>
-      {console.log(event[1].Event_name)}
-      {console.log(event[1].day)}
-      {console.log(event[1].location)}
 
 
       <div className="titleboxLine">|</div>
