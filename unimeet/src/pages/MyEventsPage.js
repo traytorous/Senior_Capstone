@@ -10,9 +10,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import MyEvent from '../components/MyEvent';
 import { getDataCone, getDataUnion, getDataLib, getDataSac } from "./Dashboard";
 
-/*
-I apologise for this terrible code hahahahahahaahahahahahahahaahahahahaha
-*/
+
 /*
 Look up default props later on. Could get rid of the placeholder variable.
 My logic maybe wrong(look for a way to )
@@ -34,14 +32,14 @@ const placeholder = [
 
 ]
 
-export async function myEventsUnion() {
+export async function myEventsUnion(info,userStorageInfo) {
   // get all the events from the union
   let test = await getDataUnion();
   // Filters out the events that don't include your username. If not in the event itself. Then a number 1 is placed there
   // Could not do a double map to return a cleaner array. Had to resort to filtering it out manually
   test = test.map(
     (e) => {
-      if (e[0][1].NumberofPeople.includes(localStorage.getItem("email"))) {
+      if (e[0][1][info].includes(localStorage.getItem(userStorageInfo))) {
         return e[0][1];
       } else {
         return 1;
@@ -53,11 +51,11 @@ export async function myEventsUnion() {
   return test;
 }
 
-export async function myEventsSac() {
+export async function myEventsSac(info,userStorageInfo) {
   let test = await getDataSac();
   test = test.map(
     (e) => {
-      if (e[0][1].NumberofPeople.includes(localStorage.getItem("email"))) {
+      if (e[0][1][info].includes(localStorage.getItem(userStorageInfo))) {
         return e[0][1];
       } else {
         return 1;
@@ -68,11 +66,11 @@ export async function myEventsSac() {
   return test;
 }
 
-export async function myEventsLib() {
+export async function myEventsLib(info,userStorageInfo) {
   let test = await getDataLib();
   test = test.map(
     (e) => {
-      if (e[0][1].NumberofPeople.includes(localStorage.getItem("email"))) {
+      if (e[0][1][info].includes(localStorage.getItem(userStorageInfo))) {
         return e[0][1];
       } else {
         return 1;
@@ -82,11 +80,11 @@ export async function myEventsLib() {
   test = test.filter((e) => e != 1)
   return test;
 }
-export async function myEventsCone() {
+export async function myEventsCone(info,userStorageInfo) {
   let test = await getDataCone();
   test = test.map(
     (e) => {
-      if (e[0][1].NumberofPeople.includes(localStorage.getItem("email"))) {
+      if (e[0][1][info].includes(localStorage.getItem(userStorageInfo))) {
         return e[0][1];
       } else {
         return 1;
@@ -110,10 +108,10 @@ export const MyEventsPage = () => {
 
 
   useEffect(async () => {
-    changeUnionEvents(await myEventsUnion());
-    changeConeEvents(await myEventsCone());
-    changeLibEvents(await myEventsLib());
-    changeSacEvents(await myEventsSac());
+    changeUnionEvents(await myEventsUnion("NumberofPeople","email"));
+    changeConeEvents(await myEventsCone("NumberofPeople","email"));
+    changeLibEvents(await myEventsLib("NumberofPeople","email"));
+    changeSacEvents(await myEventsSac("NumberofPeople","email"));
     setDidMount(true);
     if (!didMount) {
       return null;
