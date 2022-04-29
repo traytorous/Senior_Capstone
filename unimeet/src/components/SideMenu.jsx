@@ -9,10 +9,22 @@ import DisplayEvent from "./DisplayEvent";
 
 function SideMenu({ toggle, event }) {
     return (
-        <div id="sideMenu" className="open">menu
+        <>
+        <style type="text/css">
+            {`
+            .closeButton {
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+            }
+            `}
+        </style>
+        <div id="sideMenu" className="open">
             <button type="button" onClick={toggle}>x</button>
             <DisplayEvent event={event}/>
         </div>
+        </>
     )
 }
 

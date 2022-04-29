@@ -16,87 +16,93 @@ const DisplayEvent = ( props ) => {
       <style type="text/css">
           {`
           .titlebox {
-              position: absolute;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              font-size: 30px;
-              color: white;
-              background-color: #005035; 
-              margin-top: .8em;
-              height: 2em;
-              width: 65%;
-              margin-left: 17.5%;
-            }
-            
-            .titleboxLine {
-              position: absolute;
-              color: rgba(0, 0, 0, 0);
-              margin-top: 4.2em;
-              width: 65%;
-              margin-left: 17.5%;
-              border-bottom: 3px solid #B9975B;
-            }
-            
-            .eventDetailsBox {
-              position: absolute;
-              margin-top: 8em;
-              height: 20em;
-              left: 32%;
-              width: 20em;
-            }
-            
-            .eventDescriptionBox {
-              position: absolute;
-              margin-top: 8em;
-              height: 20em;
-              right: 32%;
-              width: 20em;
-            }
-            
-            .contactDetailsBox {
-              position: absolute;
-              border-top: 2px dotted #B9975B;
-              border-bottom: 2px dotted #B9975B;
-              margin-top: 29em;
-              left: 28%;
-              height: 12em;
-              width: 52.3em;
-            }
-            
-            .eventIcon {
-              position: absolute;
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              border: 1px solid grey;
-              width: 100%;
-              height: 66%;
-            }
-            
-            .eventLocation {
-              position: absolute;
-              top: 68%;
-              left: 0%;
-            }
-            
-            .eventDate {
-              position: absolute;
-              top: 68%;
-              right: 0%;
-            }
-            
-            .eventTime {
-              position: absolute;
-              top: 78%;
-              left: 0%;
-            }
-            
-            .eventAttending {
-              position: absolute;
-              top: 78%;
-              right: 0%;
-            }
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: white;
+            background-color: #005035; 
+            margin-top: 2.5%;
+            height: 2em;
+            width: 95%;
+            margin-left: 2.5%;
+          }
+
+          .titleboxLine {
+            position: absolute;
+            color: rgba(0, 0, 0, 0);
+            margin-top: 14%;
+            width: 95%;
+            margin-left: 2.5%;
+            border-bottom: 3px solid #B9975B;
+          }
+
+          .eventDetailsBox {
+            position: absolute;
+            margin-top: 25%;
+            height: 20%;
+            left: 5%;
+            width: 90%;
+            border: 1px solid red;
+          }
+
+          .eventDescriptionBox {
+            position: absolute;
+            margin-top: 8em;
+            height: 20em;
+            top: 15%;
+            left: 5%;
+            width: 90%;
+            border: 2px solid orange;
+          }
+
+          .contactDetailsBox {
+            position: absolute;
+            border-top: 2px dotted #B9975B;
+            border-bottom: 2px dotted #B9975B;
+            margin-top: 29em;
+            left: 5%;
+            height: 12em;
+            width: 90%;
+            border: 2px solid green;
+          }
+
+          .eventIcon {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid grey;
+            left: 0%;
+            top: 0%;
+            width: 50%;
+            height: 30%;
+          }
+
+          .eventLocation {
+            position: absolute;
+            top: 68%;
+            left: 0%;
+          }
+
+          .eventDate {
+            position: absolute;
+            top: 68%;
+            right: 0%;
+          }
+
+          .eventTime {
+            position: absolute;
+            top: 78%;
+            left: 0%;
+          }
+
+          .eventAttending {
+            position: absolute;
+            top: 78%;
+            right: 0%;
+          }
 
             
           `}

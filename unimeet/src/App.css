@@ -248,10 +248,9 @@
 
 .leaflet-container{
   position: relative;
-  float: left;
+  float: none;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   flex-wrap: wrap;
   justify-content: center;
   align-content:center;
