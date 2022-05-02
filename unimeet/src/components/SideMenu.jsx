@@ -14,14 +14,19 @@ function SideMenu({ toggle, event }) {
             {`
             .closeButton {
                 position: absolute;
+                
+                font-size: 20px;
                 right: 0px;
-                top: 0px;
+                top: -5px;
+                border: 0px;
+                color: white;
+                background-color: rgba(0, 0, 0, 0);
                 z-index: 1;
             }
             `}
         </style>
         <div id="sideMenu" className="open">
-            <button type="button" onClick={toggle}>x</button>
+            <button className="closeButton" type="button" onClick={toggle}>x</button>
             <DisplayEvent event={event}/>
         </div>
         </>

@@ -4,9 +4,14 @@ Example: <DisplayEvent event={event}/>
 
 TODO: Fix formatting, doofus. -By Stephen for Stephen 
 
-TODO: Find how to access "Location" and "NumberofPeople" -By Stephen for Stephen/Anyone
+TODO: Remove Icon? 
 */
 import { SignUp } from "../pages/Dashboard";
+import CstmButton from './CstmButton';
+import AttendingIcon from '../images/AttendingIcon.png'
+import CalendarIcon from '../images/CalendarIcon.png'
+import ClockIcon from '../images/ClockIcon.png'
+import MapPin from '../images/MapPin.png'
 
 const DisplayEvent = ( props ) => {
   const { event } = props
@@ -20,52 +25,56 @@ const DisplayEvent = ( props ) => {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 30px;
+            font-size: 23px;
             color: white;
             background-color: #005035; 
-            margin-top: 2.5%;
-            height: 2em;
-            width: 95%;
-            margin-left: 2.5%;
+            margin-top: 0.5%;
+            height: 10%;
+            width: 99%;
+            margin-left: 0.5%;
           }
 
           .titleboxLine {
             position: absolute;
             color: rgba(0, 0, 0, 0);
             margin-top: 14%;
-            width: 95%;
-            margin-left: 2.5%;
+            width: 99%;
+            margin-left: 0.5%;
             border-bottom: 3px solid #B9975B;
           }
 
           .eventDetailsBox {
             position: absolute;
-            margin-top: 25%;
-            height: 20%;
+            margin-top: 23%;
+            height: 10%;
             left: 5%;
             width: 90%;
-            border: 1px solid red;
+            
           }
 
           .eventDescriptionBox {
             position: absolute;
             margin-top: 8em;
-            height: 20em;
-            top: 15%;
+            border-top: 2px dotted #B9975B;
+            height: 45%;
+            top: 4%;
             left: 5%;
             width: 90%;
-            border: 2px solid orange;
+          }
+
+          .eventDescription {
+            padding-top: 5px;
+            padding-bottom: 5px;
           }
 
           .contactDetailsBox {
             position: absolute;
             border-top: 2px dotted #B9975B;
             border-bottom: 2px dotted #B9975B;
-            margin-top: 29em;
+            top: 68%;
             left: 5%;
-            height: 12em;
+            height: 20%;
             width: 90%;
-            border: 2px solid green;
           }
 
           .eventIcon {
@@ -82,52 +91,113 @@ const DisplayEvent = ( props ) => {
 
           .eventLocation {
             position: absolute;
-            top: 68%;
-            left: 0%;
+            top: 0%;
+            left: 10%;
+          }
+
+          .locationIcon {
+            position: absolute;
+            top: 0%;
+            left: 0.75%;
           }
 
           .eventDate {
             position: absolute;
-            top: 68%;
-            right: 0%;
+            top: 0%;
+            width: 30%;
+            text-align: left;
+            right: -2%;
+           
+          }
+
+          .calendarIcon {
+            position: absolute;
+            top: 0%;
+            right: 30%;
           }
 
           .eventTime {
             position: absolute;
-            top: 78%;
+            bottom: 5%;
+            left: 10%;
+          
+          }
+
+          .clockIcon {
+            position: absolute;
+            bottom: 5%;
             left: 0%;
+          
           }
 
           .eventAttending {
             position: absolute;
-            top: 78%;
-            right: 0%;
+            bottom: 5%;
+            width: 30%;
+            text-align: left;
+            right: -2%;
+            
+          
           }
 
-            
+          .attendingIcon {
+            position: absolute;
+            bottom: 5%;
+            right: 30%;
+          
+          }
+
+          .eventSignupButton {
+            position: absolute;
+            bottom: 4%;
+            left: 6%;
+          }
+
+          .contactTitle {
+            font-size: 22px;
+            font-weight: 450;
+            padding-top: 5px;
+            color: #005035;
+          }
+
+          .contactName {
+            padding-top: 5px;
+            color: #606060;
+          }
+
+          .contactEmail {
+            color: #606060;
+          }
+          
+          .contactPhone {
+            color: #606060;
+          }
           `}
       </style>
       
-      <div className="titlebox">
-      <button onClick={()=> {SignUp(event[1].location,event[1].Day,event[1].Event_name)}}>Sign up</button>
-      </div>
-
-
+      <div className="titlebox">{event[0]}</div>
       <div className="titleboxLine">|</div>
       <div className="eventDetailsBox">
-          <div className="eventIcon">icon</div>
-          <div className="eventLocation">Loc: {event[1].Event_Location}</div>
-          <div className="eventDate">Date: {event[1].Event_Date}</div>
-          <div className="eventTime">Time: {event[1].Event_Time}</div>
-          <div className="eventAttending">Attending: {event[1].NumberofPeople}</div>
+          <img className="locationIcon" src={MapPin} height="30px" width="20px"/>
+          <div className="eventLocation">{event[1].location}</div>
+          <img className="calendarIcon" src={CalendarIcon} width="24px"/> 
+          <div className="eventDate">{event[1].Event_Date}</div>
+          <img className="clockIcon" src={ClockIcon} width="24px"/> 
+          <div className="eventTime">{event[1].Event_Time}</div>
+          <img className="attendingIcon" src={AttendingIcon} width="24px"/> 
+          <div className="eventAttending">{event[1].NumberofPeople.length}</div>
           </div>
-      <div className="eventDescriptionBox">{event[1].Event_Description}</div>
+      <div className="eventDescriptionBox">
+          <div className="eventDescription">{event[1].Event_Description}</div>
+      </div>
       <div className="contactDetailsBox">
-          <div className="contactTitle">Contact Details</div>
-          <div className="contactName">Name: {event[1].Contact_name}</div>
-          <div className="contactEmail">Email: {event[1].Contact_email}</div>
-          <div className="contactPhone">Phone: {event[1].Contact_number}</div>
-
+          <div className="contactTitle">Contact the Coordinator</div>
+          <div className="contactName">{event[1].Contact_name}</div>
+          <div className="contactEmail">{event[1].Contact_email}</div>
+          <div className="contactPhone">{event[1].Contact_number}</div>
+      </div>
+      <div className="eventSignupButton">
+        <CstmButton text="Sign Up" variant="gold" size="xl" onClick={()=> {SignUp(event[1].location,event[1].Day,event[1].Event_name)}}/>
       </div>
       </>
   );
