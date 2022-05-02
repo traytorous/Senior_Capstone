@@ -143,6 +143,11 @@ export const MyEventsPage = () => {
 
       <h2 className="myEventsSubLabel">Coordinating</h2>
 
+      <h3 className="locationLabel">Union Events</h3>
+      <h3 className="locationLabel">Cone Events</h3>
+      <h3 className="locationLabel">Student Activity Center Events</h3>
+      <h3 className="locationLabel">Atkins Library Events</h3>
+
       <br/><br/>
       <hr className="dottedLineBreak"/><br/>
       <h2 className="myEventsSubLabel">Attending</h2>
@@ -180,7 +185,7 @@ export const MyEventsPage = () => {
       }
       )}
       </div>
-      
+
     </div>
   );
 }
