@@ -139,7 +139,6 @@ export const MyEventsPage = () => {
         <h1 className="myEventsLabel">My Events</h1>
         <hr className="solidLineBreak"/>
 
-      </div>
 
       <h2 className="myEventsSubLabel">Coordinating</h2>
 
@@ -185,7 +184,7 @@ export const MyEventsPage = () => {
       }
       )}
       </div>
-
     </div>
+  </div>
   );
 }
