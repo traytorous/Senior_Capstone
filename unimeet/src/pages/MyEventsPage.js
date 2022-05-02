@@ -17,6 +17,7 @@ My logic maybe wrong(look for a way to )
 */
 const placeholder = [
   
+  /*
     {
       "loading": "loading",
       "loading": "loading",
@@ -29,6 +30,7 @@ const placeholder = [
       "loading": "loading",
       "NumberofPeople": [0]
     },
+    */
 
 ]
 
@@ -131,23 +133,37 @@ export const MyEventsPage = () => {
     
     <div className="textBackground">
       <NavBar2 />
-      <h1> Welcome {localStorage.getItem("username")} to the My Events page</h1>
-      <h3>Union Events</h3>
+      
+      <div className="myEventsContainer">
+
+        <h1 className="myEventsLabel">My Events</h1>
+        <hr className="solidLineBreak"/>
+
+      </div>
+
+      <h2 className="myEventsSubLabel">Coordinating</h2>
+
+      <br/><br/>
+      <hr className="dottedLineBreak"/><br/>
+      <h2 className="myEventsSubLabel">Attending</h2>
+
+
+      <h3 className="locationLabel">Union Events</h3>
       {unionEvents.map((e)=>{
         return <MyEvent event={e} location="union"/>
       }
       )}
-      <h3>Cone Events</h3>
+      <h3 className="locationLabel">Cone Events</h3>
       {coneEvents.map((e)=>{
         return <MyEvent event={e} location="cone"/>
       }
       )}
-      <h3>Student Activity Center Events</h3>
+      <h3 className="locationLabel">Student Activity Center Events</h3>
       {sacEvents.map((e)=>{
         return <MyEvent event={e} location="sac"/>
       }
       )}
-      <h3>Atkins Library Events</h3>
+      <h3 className="locationLabel">Atkins Library Events</h3>
       {libEvents.map((e)=>{
         return <MyEvent event={e} location="lib"/>
       }

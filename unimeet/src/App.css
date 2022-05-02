@@ -156,6 +156,54 @@
 
 
 
+/* MyEventsPage CSS */
+
+/*Dotted line break to separate Attending events from Coordinating events*/
+.dottedLineBreak {
+  border: none;
+  border-top: 5px dotted #B9975B;
+  background-color: transparent;
+  width: 75%;
+  margin: 0 auto;
+  opacity: 1;
+}
+
+/*Dotted line break to separate Coordinating events from Attending events*/
+.solidLineBreak {
+  border: none;
+  border-top: 5px solid #B9975B;
+  width: 100%;
+  opacity: 1;
+}
+
+/*Sub-labels, aka the "Attending" and "Coordinating" subheadings */
+.myEventsSubLabel {
+  color: #005035;
+  font-weight: 600;
+}
+
+/*Main heading for the My Events page*/
+.myEventsLabel {
+  background-color: #005035;
+  color: white;
+  font-weight: 600;
+  padding: 10px;
+}
+
+/*Entire container for the My Events page content */
+.myEventsContainer {
+  width: 80%;
+  margin: 50px auto;
+}
+
+/*Text label for each location */
+.locationLabel {
+  text-align: left;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
+
 /* CreateEventpage CSS */
 
 /*Handles the width and centering of each input box*/
