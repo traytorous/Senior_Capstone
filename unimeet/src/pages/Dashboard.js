@@ -52,7 +52,8 @@ export const Dashboard = () => {
   return (
     <div className="textBackground">
       <NavBar2 />
-      <h1> Welcome {localStorage.getItem("username")}</h1>
+      <div className="dashboardWelcome">Welcome {localStorage.getItem("username")}</div>
+      <div className="dashboardMessage">Let's see what's going on around campus!</div>
       <div className="mainArea">
         <MapAndMenu/>
       </div>

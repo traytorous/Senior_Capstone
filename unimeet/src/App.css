@@ -289,6 +289,20 @@
 
 }
 
+/* Dashboard page misc. (everything other than map and sidemenu) */
+
+.dashboardWelcome {
+  color: #005035;
+  font-size: 36px;
+  padding-top: 10px;
+}
+
+.dashboardMessage {
+  color: #005035;
+  font-size: 22px;
+  padding-bottom: 5px;
+}
+
 /* Dashboard "Main Area" (leaflet map and sidemenu) */
 
 .mainArea {
