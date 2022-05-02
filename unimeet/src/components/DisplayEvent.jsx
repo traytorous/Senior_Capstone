@@ -7,12 +7,21 @@ Known Issues: Title overflows outside of div if too long. (likely can't fix befo
 TODO: Remove Icon? 
 */
 
-import { SignUp } from "../pages/Dashboard";
+import { SignUp, signDown } from "../pages/Dashboard";
 import CstmButton from './CstmButton';
 import AttendingIcon from '../images/AttendingIcon.png'
 import CalendarIcon from '../images/CalendarIcon.png'
 import ClockIcon from '../images/ClockIcon.png'
 import MapPin from '../images/MapPin.png'
+
+/*
+let isAttending = false;
+//event[1].NumberofPeople.includes(localStorage.getItem("email")
+
+function attending(array) {
+  if (array.includes(localStorage.getItem("email"))
+} 
+*/
 
 const DisplayEvent = ( props ) => {
   const { event } = props
@@ -198,7 +207,9 @@ const DisplayEvent = ( props ) => {
           <div className="contactPhone">{event[1].Contact_number}</div>
       </div>
       <div className="eventSignupButton">
-        <CstmButton text="Sign Up" variant="gold" size="xl" onClick={()=> {SignUp(event[1].location,event[1].Day,event[1].Event_name)}}/>
+        { event[1].NumberofPeople.includes(localStorage.getItem("email")) ? 
+        <CstmButton text="Leave Event" variant="red" size="xl" onClick={()=> {signDown(event[1].location, event[1].Day, event[1].Event_name)}}/> : 
+        <CstmButton text="Sign Up" variant="gold" size="xl" onClick={()=> {SignUp(event[1].location,event[1].Day,event[1].Event_name)}}/>}
       </div>
       </>
   );
