@@ -27,6 +27,7 @@ const DisplayEvent = ( props ) => {
             justify-content: center;
             align-items: center;
             font-size: 23px;
+            font-weight: 450;
             color: white;
             background-color: #005035; 
             margin-top: 0.5%;
@@ -94,6 +95,7 @@ const DisplayEvent = ( props ) => {
             position: absolute;
             top: 0%;
             left: 10%;
+            font-weight: bold;
           }
 
           .locationIcon {
@@ -108,7 +110,7 @@ const DisplayEvent = ( props ) => {
             width: 30%;
             text-align: left;
             right: -2%;
-           
+            font-weight: bold;
           }
 
           .calendarIcon {
@@ -121,7 +123,7 @@ const DisplayEvent = ( props ) => {
             position: absolute;
             bottom: 5%;
             left: 10%;
-          
+            font-weight: bold;
           }
 
           .clockIcon {
@@ -137,15 +139,13 @@ const DisplayEvent = ( props ) => {
             width: 30%;
             text-align: left;
             right: -2%;
-            
-          
+            font-weight: bold;
           }
 
           .attendingIcon {
             position: absolute;
             bottom: 5%;
             right: 30%;
-          
           }
 
           .eventSignupButton {

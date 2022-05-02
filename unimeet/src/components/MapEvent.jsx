@@ -4,7 +4,7 @@ Example: <NewMapEvent event={e} onClick={() => {setMenuStatus(true);eventChanger
 event passes the intended event.
 onClick will take two functions with a value to pass back to MapAndMenu. 
 
-TODO: Fix spacing issue when more than one event displays on a single day.
+TODO: Remove Icon Code?
 */
 
 function MapEvent({ onClick, event }) {
@@ -13,14 +13,26 @@ function MapEvent({ onClick, event }) {
         <style type="text/css">
             {`
             .popup-event {
-              position: relative;
-              border: 1px solid grey; 
-              height: 7em;
-              width: 18em;
-              margin-bottom: 5px;
-              margin-right: 0px;
-              display: inline-block;
-              padding: 0px; 
+                position: relative;
+                border: 2px solid #005035; 
+                height: 6em;
+                width: 18em;
+                margin-bottom: 5px;
+                margin-right: 0px;
+                display: inline-block;
+                padding: 0px; 
+                background-color: white;
+                transition: 0.25s;
+                color: #005035;
+            }
+
+            .popup-event:hover {
+                background-color: #D3EDE2;
+            }
+
+            .popup-event:focus {
+                background-color: #005035;
+                color: white;
             }
               
             .popup-box1 {
@@ -55,10 +67,12 @@ function MapEvent({ onClick, event }) {
                 width: 100%;
                 text-align: center;
                 transform: translate(-50%,-50%);
-              
+                font-size: 15px;
+                font-weight: bold;
             }
               
             .popup-time {
+                padding-top: 15px;
                 margin: 0;
                 position: absolute;
                 top: 66%;
@@ -71,13 +85,8 @@ function MapEvent({ onClick, event }) {
         </style>
   
         <button className="popup-event" onClick={onClick}>
-            <div className="popup-box1">
-                <div className="popup-icon"></div>
-            </div>
-            <div className="popup-box2">
                 <div className="popup-name">{event[0]}</div>
                 <div className="popup-time">{event[1].Event_Date} @ {event[1].Event_Time}</div>
-            </div>
         </button>
         </>
     );
