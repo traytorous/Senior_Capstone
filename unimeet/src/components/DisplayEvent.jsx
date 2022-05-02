@@ -2,10 +2,11 @@
 This component is for displaying event details in the SideMenu.
 Example: <DisplayEvent event={event}/>
 
-TODO: Fix formatting, doofus. -By Stephen for Stephen 
+Known Issues: Title overflows outside of div if too long. (likely can't fix before final deliverable)
 
 TODO: Remove Icon? 
 */
+
 import { SignUp } from "../pages/Dashboard";
 import CstmButton from './CstmButton';
 import AttendingIcon from '../images/AttendingIcon.png'
@@ -45,7 +46,7 @@ const DisplayEvent = ( props ) => {
 
           .eventDetailsBox {
             position: absolute;
-            margin-top: 23%;
+            margin-top: 24%;
             height: 10%;
             left: 5%;
             width: 90%;
@@ -54,9 +55,9 @@ const DisplayEvent = ( props ) => {
 
           .eventDescriptionBox {
             position: absolute;
-            margin-top: 8em;
+            margin-top: 9em;
             border-top: 2px dotted #B9975B;
-            height: 45%;
+            height: 43%;
             top: 4%;
             left: 5%;
             width: 90%;
@@ -202,6 +203,5 @@ const DisplayEvent = ( props ) => {
       </>
   );
 };
-      
 
 export default DisplayEvent;
