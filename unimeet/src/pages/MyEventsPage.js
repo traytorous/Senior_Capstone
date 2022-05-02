@@ -149,25 +149,38 @@ export const MyEventsPage = () => {
 
 
       <h3 className="locationLabel">Union Events</h3>
+      <div className="alignEvents">
       {unionEvents.map((e)=>{
         return <MyEvent event={e} location="union"/>
       }
       )}
+      </div>
+
       <h3 className="locationLabel">Cone Events</h3>
+      <div className="alignEvents">
       {coneEvents.map((e)=>{
         return <MyEvent event={e} location="cone"/>
       }
       )}
+      </div>
+
+
       <h3 className="locationLabel">Student Activity Center Events</h3>
+      <div className="alignEvents">
       {sacEvents.map((e)=>{
         return <MyEvent event={e} location="sac"/>
       }
       )}
+      </div>
+
       <h3 className="locationLabel">Atkins Library Events</h3>
+      <div className="alignEvents">
       {libEvents.map((e)=>{
         return <MyEvent event={e} location="lib"/>
       }
       )}
+      </div>
+      
     </div>
   );
 }
