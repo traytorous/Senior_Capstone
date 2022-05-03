@@ -77,8 +77,10 @@ const EventSignUp = () => {
     return (
 
         <div className="container padding">
-            <div class="row">
-                <div className="mydiv">
+            <div class="column">
+                <div className="mydivcontainer">
+
+                    <div className="mydiv">
                     <Form onSubmit={(e) => { e.preventDefault() }}>
                         <Form.Group className="mb-3" controlId="EventNameID" >
                             <Form.Label>Event Name</Form.Label>
@@ -88,10 +90,16 @@ const EventSignUp = () => {
 
                             <Form.Group className="mb-3" controlId="EventDetailID">
                                 <Form.Label>Description</Form.Label>
-                                <Form.Control className="w-50" onChange={(e) => { changeEventdescription(e.target.value); }} as="textarea" rows={3} />
+                                <Form.Control className="w-50" onChange={(e) => { changeEventdescription(e.target.value); }} as="textarea" rows={5} />
                             </Form.Group>
                         </div>
-
+                        
+                    </Form>
+                    </div>
+                    <div className="container padding">
+                        <div class="column">
+                       
+                                <div className="mydiv">
                         <Form.Label>Event Location</Form.Label>
                         {['radio'].map((type) => (
                             <div key={`inline-${type}`} className="mb-3">
@@ -135,13 +143,11 @@ const EventSignUp = () => {
 
 
                             </div>
-
+                           
                         ))}
-
-                    </Form>
-
-
-
+                
+                      
+                           
 
                     <Form.Group className="mb-3" controlId="EventDateID" >
                         <Form.Label> Event Date </Form.Label>
@@ -152,8 +158,11 @@ const EventSignUp = () => {
                         <Form.Label> Event Time </Form.Label>
                         <Form.Control className="w-50" onChange={(e) => { changeEventTime(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
                     </Form.Group>
+                        </div>
+                        </div></div>
+                
+                  </div>
                 </div>
-
                 <div className="mydiv">
                     <Form.Group className="mb-3" controlId="EventContactNameID" >
                         <Form.Label> Contact Name </Form.Label>
@@ -223,7 +232,7 @@ const EventSignUp = () => {
 
 
             </div>
-        </div>
+      
     )
 
 

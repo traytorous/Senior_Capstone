@@ -387,7 +387,7 @@
 /*css for create evet page */
 .mydiv {
     border-color: #005035;
-    border-style: double;
+    border-style: groove;
     padding: 20px;
     border-radius: 10px;
     text-align: center;
