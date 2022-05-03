@@ -224,7 +224,7 @@
   text-align: center;
 }
 
-/* Css that handles the bottom of the page*/
+/* Css that handles the bottom of the page no longer in use after creating footer*/
 .App-header {
   background-color:#005035;
   margin: auto;
@@ -377,3 +377,25 @@
   animation: 0.3s fadein;
 }
 
+/* css for about us text*/
+.aboutUs {
+    text-align: left;
+    font-size: 24px;
+    padding: 20px 150px 20px 150px;
+}
+
+/*css for create evet page */
+.mydiv {
+    border-color: #005035;
+    border-style: double;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
+}
+
+/*can be used to split the text on create event page*/
+.mydivcontainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}

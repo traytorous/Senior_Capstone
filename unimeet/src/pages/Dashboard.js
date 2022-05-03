@@ -7,6 +7,7 @@ import CstmButton from '../components/CstmButton';
 import { getDoc, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
 import MapEvent from '../components/MapEvent';
 import MapAndMenu from '../components/MapAndMenu';
+import { Footer } from "../components/Footer";
 
 /* The lines below are for the map. I would not recommend touching :) */
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
@@ -56,7 +57,8 @@ export const Dashboard = () => {
       <div className="dashboardMessage">Let's see what's going on around campus!</div>
       <div className="mainArea">
         <MapAndMenu/>
-      </div>
+          </div>
+          <Footer/>
     </div>
 
   );

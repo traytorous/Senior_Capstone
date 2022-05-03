@@ -9,7 +9,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import MyEvent from '../components/MyEvent';
 import { getDataCone, getDataUnion, getDataLib, getDataSac } from "./Dashboard";
-
+import { Footer } from '../components/Footer';
 
 /*
 Look up default props later on. Could get rid of the placeholder variable.
@@ -130,7 +130,7 @@ export const MyEventsPage = () => {
   }, [userdata])
 
   return (
-    
+    <div>
     <div className="textBackground">
       <NavBar2 />
       
@@ -185,6 +185,8 @@ export const MyEventsPage = () => {
       )}
       </div>
     </div>
-  </div>
+      </div>
+      <Footer/>
+      </div>
   );
 }

@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import DisplayEvent from '../components/DisplayEvent';
 import CstmButton from '../components/CstmButton';
+import { Footer } from "../components/Footer";
 
 /* TODO: Implement with actual data, need way to route to each unique event */
 
@@ -37,11 +38,13 @@ export const EventPage = () => {
             }
             `}
             </style>
-
+                <div>
             <div className="textBackground">
                 <NavBar2/>
                 <DisplayEvent/>
                 <div className="eventPageSignUpButton"><CstmButton text="Sign Up" variant="gold" size="xl"/></div>
+                </div>
+                <Footer />
             </div>
             </>
         );
