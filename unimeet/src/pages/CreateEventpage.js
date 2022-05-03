@@ -30,10 +30,13 @@ export const CreateEventPage = () => {
 
     }, [userdata])
     return (
+        <div>
         <div className="textBackground">
             <NavBar2 />
-            <h1> Create Events</h1>
-            <EventSignUp /><br></br><br></br>
+                <h1> Create Events</h1>
+                <br></br><br></br>
+                <EventSignUp />
+                </div>
             <Footer />
         </div>
     )
@@ -80,7 +83,7 @@ const EventSignUp = () => {
             <div class="column">
                 <div className="mydivcontainer">
 
-                    <div className="myiv">
+                    <div className="mydiv">
                     <Form onSubmit={(e) => { e.preventDefault() }}>
                         <Form.Group className="mb-3" controlId="EventNameID" >
                             <Form.Label>Event Name</Form.Label>
@@ -99,7 +102,7 @@ const EventSignUp = () => {
                     <div className="container padding">
                         <div class="column">
                        
-                                <div className="mdiv">
+                                <div className="mydiv">
                         <Form.Label>Event Location</Form.Label>
                         {['radio'].map((type) => (
                             <div key={`inline-${type}`} className="mb-3">
@@ -162,15 +165,17 @@ const EventSignUp = () => {
                         </div></div>
                 
                   </div>
-                </div>
-                <div className="mdiv">
+            </div>
+            <br></br>
+            <div className="mydiv">
+                <h3>Contact Information</h3>
                     <Form.Group className="mb-3" controlId="EventContactNameID" >
-                        <Form.Label> Contact Name </Form.Label>
+                        <Form.Label> Name </Form.Label>
                         <Form.Control className="w-50" onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="EventPhoneNumberID" >
-                        <Form.Label> Contact Phone Number  </Form.Label>
+                        <Form.Label> Phone Number  </Form.Label>
                         <Form.Control className="w-50" onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
                     </Form.Group>
                   
@@ -226,9 +231,10 @@ const EventSignUp = () => {
                         </div>
                          
                     ))}
-                </div>
+            </div>
+            <br></br>
             <Button variant="gold" onClick={send_Wrapper} type="submit">Create Event</Button>
-
+            <br></br><br></br>
 
 
             </div>

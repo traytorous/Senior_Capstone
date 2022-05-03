@@ -3,8 +3,9 @@
     "",
     "\\unimeet",
     "\\unimeet\\src",
+    "\\unimeet\\src\\components",
     "\\unimeet\\src\\pages"
   ],
-  "SelectedNode": "\\unimeet\\src\\pages\\Dashboard.js",
+  "SelectedNode": "\\unimeet\\src\\pages\\CreateEventpage.js",
   "PreviewInSolutionExplorer": false
 }
