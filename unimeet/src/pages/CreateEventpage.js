@@ -80,7 +80,7 @@ const EventSignUp = () => {
             <div class="column">
                 <div className="mydivcontainer">
 
-                    <div className="mydiv">
+                    <div className="myiv">
                     <Form onSubmit={(e) => { e.preventDefault() }}>
                         <Form.Group className="mb-3" controlId="EventNameID" >
                             <Form.Label>Event Name</Form.Label>
@@ -99,7 +99,7 @@ const EventSignUp = () => {
                     <div className="container padding">
                         <div class="column">
                        
-                                <div className="mydiv">
+                                <div className="mdiv">
                         <Form.Label>Event Location</Form.Label>
                         {['radio'].map((type) => (
                             <div key={`inline-${type}`} className="mb-3">
@@ -163,7 +163,7 @@ const EventSignUp = () => {
                 
                   </div>
                 </div>
-                <div className="mydiv">
+                <div className="mdiv">
                     <Form.Group className="mb-3" controlId="EventContactNameID" >
                         <Form.Label> Contact Name </Form.Label>
                         <Form.Control className="w-50" onChange={(e) => { changeContactname(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
@@ -173,7 +173,7 @@ const EventSignUp = () => {
                         <Form.Label> Contact Phone Number  </Form.Label>
                         <Form.Control className="w-50" onChange={(e) => { changeContactPhonenumber(e.target.value); }} type="text" onSubmit={(e) => { e.preventDefault() }} />
                     </Form.Group>
-                    <Button variant="dark" onClick={send_Wrapper} type="submit">Create Event</Button>
+                  
 
 
                     {['radio'].map((type) => (
@@ -223,11 +223,11 @@ const EventSignUp = () => {
                                 onChange={(e) => (changeDayOfTheWeek(e.currentTarget.value))}
                                 id={`inline-${type}-4`}
                             />
-
                         </div>
-
+                         
                     ))}
                 </div>
+            <Button variant="gold" onClick={send_Wrapper} type="submit">Create Event</Button>
 
 
 
