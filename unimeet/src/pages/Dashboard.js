@@ -50,14 +50,16 @@ export const Dashboard = () => {
 
   }, [userdata])
 
-  return (
+    return (
+      <div>
     <div className="textBackground">
       <NavBar2 />
       <div className="dashboardWelcome">Welcome {localStorage.getItem("username")}</div>
       <div className="dashboardMessage">Let's see what's going on around campus!</div>
       <div className="mainArea">
         <MapAndMenu/>
-          </div>
+                </div>
+                </div>
           <Footer/>
     </div>
 
