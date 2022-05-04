@@ -5,6 +5,8 @@ Example: <DisplayEvent event={event}/>
 Known Issues: Title overflows outside of div if too long. (likely can't fix before final deliverable)
 
 TODO: Remove Icon? 
+
+TODO: Research updating state inside components for seemless transitions between signup and un-signup
 */
 
 import { SignUp, signDown } from "../pages/Dashboard";

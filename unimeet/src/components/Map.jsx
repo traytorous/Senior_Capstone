@@ -188,6 +188,7 @@ function Map({setMenuStatus, eventChanger}) {
             <Marker position={student_union}>
               <Popup>
                 <div className="popupTitle">Student Union</div>
+                <div className="popupScroll">
                 <div className="popupDay">Monday</div>
                 {unionEvents[0].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
                 <div className="popupDay">Tuesday</div>
@@ -198,11 +199,13 @@ function Map({setMenuStatus, eventChanger}) {
                 {unionEvents[3].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
                 <div className="popupDay">Friday</div>
                 {unionEvents[4].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
+                </div>
               </Popup>
             </Marker>
             <Marker position={sac}>
               <Popup>
                 <div className="popupTitle">Student Activity Center</div>
+                <div className="popupScroll">
                 <div className="popupDay">Monday</div>
                 {sacEvents[0].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
                 <div className="popupDay">Tuesday</div>
@@ -213,11 +216,13 @@ function Map({setMenuStatus, eventChanger}) {
                 {sacEvents[3].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
                 <div className="popupDay">Friday</div>
                 {sacEvents[4].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
+                </div>
               </Popup>
             </Marker>
             <Marker position={atkins_library}>
               <Popup>
                 <div className="popupTitle">Atkins Library</div>
+                <div className="popupScroll">
                 <div className="popupDay">Monday</div>
                 {libEvents[0].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
                 <div className="popupDay">Tuesday</div>
@@ -228,11 +233,13 @@ function Map({setMenuStatus, eventChanger}) {
                 {libEvents[3].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
                 <div className="popupDay">Friday</div>
                 {libEvents[4].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
+                </div>
               </Popup>
             </Marker>
             <Marker position={cone}>
               <Popup>
                 <div className="popupTitle">Cone University Center</div>
+                <div className="popupScroll">
                 <div className="popupDay">Monday</div>
                 {coneEvents[0].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
                 <div className="popupDay">Tuesday</div>
@@ -243,6 +250,7 @@ function Map({setMenuStatus, eventChanger}) {
                 {coneEvents[3].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
                 <div className="popupDay">Friday</div>
                 {coneEvents[4].map((e)=><MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>) ?? <p>No events</p>}
+                </div>
               </Popup>
             </Marker>
           </MapContainer>
