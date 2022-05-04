@@ -50,7 +50,7 @@ const DisplayEvent = ( props ) => {
           .titleboxLine {
             position: absolute;
             color: rgba(0, 0, 0, 0);
-            margin-top: 14%;
+            margin-top: 13%;
             width: 99%;
             margin-left: 0.5%;
             border-bottom: 3px solid #B9975B;

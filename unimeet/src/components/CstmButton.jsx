@@ -44,6 +44,8 @@ const CstmButton = (props) => {
             .btn-red:focus {
                 background-color: #7A0F0F;
                 color: white;
+                outline: 0;
+                box-shadow: none;
             }
 
             .btn-gold:hover {
