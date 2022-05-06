@@ -1,3 +1,5 @@
+/* Image carousel used to make a slideshow with university branding for the charlotte-themed Unimeet site */
+
 import { Carousel } from 'react-bootstrap';
 import UNCC1 from '../images/unccprod1.jpg';
 import UNCC2 from '../images/unccprod2.jpg';

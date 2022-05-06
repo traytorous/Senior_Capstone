@@ -1,17 +1,12 @@
-import {Nav,Container,Navbar,Button } from 'react-bootstrap';
 import {signInGoogle,signOutGoogle,Userphoto} from './Firebase';
 import { useNavigate } from "react-router-dom";
 import CstmButton from './CstmButton';
-
-/* TODO: Decide on style then remove and replace unused imports */
 import UNCCLogo from '../images/UNCC Logo White Cropped.png';
 import UnimeetLogo from '../images/Unimeet_Home.png';
-import logo from "..//images/logo.jpg";
-import uncc2 from "..//images/uncc2.jpg";
 
 /*Two navbars. If signed in they switch.*/
 
-/* TODO: Switch positions of login and signup buttons, may have to be done in css */
+/* Navbar if user is not signed in */
 export const NavBar1 = () => { 
   return (
     <header className="topbar1">
@@ -36,6 +31,7 @@ export const NavBar1 = () => {
   )
 }
 
+/* Navbar if user is signed in */
 export const NavBar2 = () => {
   const navigate = useNavigate();
   

@@ -1,12 +1,8 @@
 /*  
-This component is for displaying event details in the SideMenu.
+This component is for displaying event details and a signup/leave button in the SideMenu.
 Example: <DisplayEvent event={event}/>
 
 Known Issues: Title overflows outside of div if too long. (likely can't fix before final deliverable)
-
-TODO: Remove Icon? 
-
-TODO: Research updating state inside components for seemless transitions between signup and un-signup
 */
 
 import { SignUp, signDown } from "../pages/Dashboard";
@@ -15,15 +11,6 @@ import AttendingIcon from '../images/AttendingIcon.png'
 import CalendarIcon from '../images/CalendarIcon.png'
 import ClockIcon from '../images/ClockIcon.png'
 import MapPin from '../images/MapPin.png'
-
-/*
-let isAttending = false;
-//event[1].NumberofPeople.includes(localStorage.getItem("email")
-
-function attending(array) {
-  if (array.includes(localStorage.getItem("email"))
-} 
-*/
 
 const DisplayEvent = ( props ) => {
   const { event } = props

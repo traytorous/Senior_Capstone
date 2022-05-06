@@ -5,7 +5,7 @@ where e is an event*/
 import { signDown } from "../pages/Dashboard";
 import ImgPlaceholder from '../images/stockphoto.jpg';
 import SampleUserIcon from '../images/Sample_User_Icon.png';
-/* TODO: change px to em, remove testing borders and correct how data is receieved and spat out*/
+
 function refreshpage(){
     window.location.reload(false);
 }

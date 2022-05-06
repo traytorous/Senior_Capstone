@@ -1,8 +1,9 @@
 /*  
 This component is for displaying event information in the SideMenu. 
 Example: <Menu toggle={toggle} event={currEvent}/>
-toggle passes a variable that to close the SideBar from within the SideMenu.
-event will pass the current event to the DisplayEvent component to display and format event info.
+Toggle passes a variable that to close the SideBar from within the SideMenu.
+Event will pass the current event to the DisplayEvent component to display and format event info.
+DisplayEvent component is used to format the event information ion the SideMenu.
 */
 
 import DisplayEvent from "./DisplayEvent";
@@ -14,7 +15,6 @@ function SideMenu({ toggle, event }) {
             {`
             .closeButton {
                 position: absolute;
-                
                 font-size: 20px;
                 right: 0px;
                 top: -5px;

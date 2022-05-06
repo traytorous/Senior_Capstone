@@ -1,10 +1,8 @@
 /*  
-This component is for displaying event information in the leaflet popup. It also acts as a button to open the SideMenu. 
-Example: <NewMapEvent event={e} onClick={() => {setMenuStatus(true);eventChanger(e);}}/>
+This component is for displaying event information in the Map popup menus. It also acts as a button to open the SideMenu. 
+Example: <MapEvent event={e} onClick={() => {setMenuStatus();eventChanger(e);}}/>
 event passes the intended event.
 onClick will take two functions with a value to pass back to MapAndMenu. 
-
-TODO: Remove Icon Code?
 */
 
 function MapEvent({ onClick, event }) {

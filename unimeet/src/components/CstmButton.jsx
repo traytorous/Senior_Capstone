@@ -1,8 +1,8 @@
 import { Button } from 'react-bootstrap';
 
-/* Custom button with color and size variants. 
+/* Custom button with website-styled color and size variants. 
 Can also pass text and onClick to this button.
-See Navigation.js for examples.
+Example: <CstmButton text="example" size="xl" variant="gold" onClick={someFunction} />
 */
 
 const CstmButton = (props) => {

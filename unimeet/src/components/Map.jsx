@@ -149,6 +149,7 @@ export async function getDataLib() {
   
   ];
 
+/* The Map will be able to open and close the sidemenu, and pass to the sidemenu which event has been selected */
 function Map({setMenuStatus, eventChanger}) {
     /* The place holder variable is there so that when function 
     below tries to iterate through the object to get the data it does not error out
