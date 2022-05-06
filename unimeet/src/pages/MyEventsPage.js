@@ -301,7 +301,7 @@ export const MyEventsPage = () => {
       <h3 className="locationLabel">Cone Events</h3>
       <div className="alignEvents">
       {coneCoordinated.map((e)=>{
-        return <MyCoordinatedEvent event={e} location="union"/>
+        return <MyCoordinatedEvent event={e} location="cone"/>
       }
       )}
       </div>
@@ -309,7 +309,7 @@ export const MyEventsPage = () => {
       <h3 className="locationLabel">Student Activity Center Events</h3>
       <div className="alignEvents">
       {sacCoordinated.map((e)=>{
-        return <MyCoordinatedEvent event={e} location="union"/>
+        return <MyCoordinatedEvent event={e} location="sac"/>
       }
       )}
       </div>
@@ -317,7 +317,7 @@ export const MyEventsPage = () => {
       <h3 className="locationLabel">Atkins Library Events</h3>
       <div className="alignEvents">
       {libCoordinated.map((e)=>{
-        return <MyCoordinatedEvent event={e} location="union"/>
+        return <MyCoordinatedEvent event={e} location="lib"/>
       }
       )}
       </div>
