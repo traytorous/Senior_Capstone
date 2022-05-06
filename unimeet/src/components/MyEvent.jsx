@@ -18,40 +18,14 @@ const MyEvent = (props) => {
                 {`
             .myevent-event {
                 position: relative;
-                /*border: 4px solid gold;*/ 
-                height: 10em;
+                border: 2px solid #005035; 
+                height: 6em;
                 width: 12em;
                 margin: 5px;
-            }
-              
-            .myevent-box1 {
-                position: absolute;
-                top: 0%;
-                height: 66%;
-                width: 100%;
-                /*border: 2px solid blue;*/
-            }
 
-            .myevent-box2 {
-                position: absolute;
-                bottom: 0%;
-                height: 34%;
-                width: 100%;
-                /*border: 2px solid red;*/
-            }
-              
-            .myevent-icon {
-                position: absolute;
-                /*border: 2px solid black;*/
-                height: 100%;
-                width: 100%;
-                text-align: center;
-            }
-
-            .iconImage {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
+                background-color: white;
+                transition: 0.25s;
+                color: #005035;
             }
 
             .userSymbol {
@@ -63,7 +37,7 @@ const MyEvent = (props) => {
             .myevent-name {
                 margin: 0;
                 position: absolute;
-                top: 15%;
+                top: 25%;
                 left: 50%;
                 width: 100%;
                 font-size: 15px;
@@ -76,7 +50,7 @@ const MyEvent = (props) => {
             .myevent-time {
                 margin: 0;
                 position: absolute;
-                top: 51%;
+                top: 55%;
                 left: 50%;
                 width: 100%;
                 font-size: 13px;
@@ -98,27 +72,30 @@ const MyEvent = (props) => {
                 margin: 0;
                 position: absolute;
                 top: 10%;
-                left: 95%;
+                left: 96%;
                 width: 10%;
-                font-size: 13px;
+                font-size: 20px;
                 text-align: center;
                 transform: translate(-50%,-50%);
+
+                height: 21%;
+                line-height: 21%;
+                /*border: 1px solid #005035;*/
+                border: 0px;
+                color: black;;
+                background-color: transparent;
             }
             `}
             </style>
 
             <div className="myevent-event">
-                <div className="myevent-box1">
-                    <div className="myevent-icon"> <img src={ImgPlaceholder} alt="temp placeholder" className="iconImage"/> </div>
                     <button className="myevent-delete" onClick={() => { signDown(location, event[1].Day, event[0]) ;
                     setTimeout(refreshpage,1000);
-                    }}>X</button>
-                </div>
-                <div className="myevent-box2">
+                    }}>x</button>
+
                     <div className="myevent-name">{event[0]}</div>
                     <div className="myevent-time">{event[1].Event_Date} @ {event[1].Event_Time}</div>
                     <div className="myevent-people"> <img src={SampleUserIcon} alt="user icon" className="userSymbol"/> {(event[1].NumberofPeople.length)} at event</div>
-                </div>
             </div>
         </>
     );
