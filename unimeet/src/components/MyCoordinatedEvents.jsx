@@ -2,14 +2,14 @@
 This is how to use it.
 <MyEvent event={e} /> 
 where e is an event*/
-import { signDown } from "../pages/Dashboard";
+import { deleteEvent } from "../pages/Dashboard";
 import ImgPlaceholder from '../images/stockphoto.jpg';
 import SampleUserIcon from '../images/Sample_User_Icon.png';
 /* TODO: change px to em, remove testing borders and correct how data is receieved and spat out*/
 function refreshpage(){
     window.location.reload(false);
 }
-const MyEvent = (props) => {
+const MyCoordinatedEvent = (props) => {
     const { event,location } = props
 
     return (
@@ -110,7 +110,7 @@ const MyEvent = (props) => {
             <div className="myevent-event">
                 <div className="myevent-box1">
                     <div className="myevent-icon"> <img src={ImgPlaceholder} alt="temp placeholder" className="iconImage"/> </div>
-                    <button className="myevent-delete" onClick={() => { signDown(location, event[1].Day, event[0]) ;
+                    <button className="myevent-delete" onClick={() => { deleteEvent(location, event[1].Day, event[0]) ;
                     setTimeout(refreshpage,1000);
                     }}>X</button>
                 </div>
@@ -125,4 +125,4 @@ const MyEvent = (props) => {
 };
 
 
-export default MyEvent;
+export default MyCoordinatedEvent;

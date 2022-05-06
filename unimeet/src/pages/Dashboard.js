@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import CstmButton from '../components/CstmButton';
-import { getDoc, doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { getDoc, doc, updateDoc, arrayUnion, arrayRemove,deleteField } from "firebase/firestore";
 import MapEvent from '../components/MapEvent';
 import MapAndMenu from '../components/MapAndMenu';
 import { Footer } from "../components/Footer";
@@ -143,6 +143,15 @@ export async function signDown(location, day, event) {
   )
 }
 
+export async function deleteEvent(location,day,event){
+  const ref = doc(db, "Location", location, day, "Events");
+
+  await updateDoc(ref,{
+   [event]:deleteField()
+  }  
+    )
+
+}
 
 /*Read the comment in the Mapapi to understand this variable*/
 export const placeholder = [
